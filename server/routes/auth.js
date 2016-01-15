@@ -23,7 +23,11 @@ function createJWT(user) {
   return jwt.sign(payload, process.env.JWT_SECRET);
 }
 
-
+/*
+ |--------------------------------------------------------------------------
+ | Login with Facebook
+ |--------------------------------------------------------------------------
+ */
 
 router.post('/facebook', function(req, res) {
     var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
@@ -100,8 +104,11 @@ router.post('/facebook', function(req, res) {
 /*** WHY IS THERE NO db.User??*****/
 
 router.post('/login', function(req, res) {
+  console.log("INSIDE LOGIN");
+  console.log('BODY', req.body)
   db.User.findOne({ email: req.body.email }, '+password', function(err, user) {
     if (!user) {
+      console.log("ERROR!",err);
       return res.status(401).send({ message: 'Invalid email and/or password' });
     }
     user.comparePassword(req.body.password, function(err, isMatch) {

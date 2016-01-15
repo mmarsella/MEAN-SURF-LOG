@@ -47,32 +47,32 @@ userSchema.pre('save', function (next){
 
 /***** AUTHENTICATION *********/
 
-userSchema.statics.authenticate = function (formData, callback) {
-  // this refers to the model!
-  this.findOne({
-    name: formData.name
-  },
-  function (err, user) {
-    if (user === null){
-      callback("Invalid name or password",null);
-    }
-    else {
-      user.checkPassword(formData.password, callback);
-    }
-  });
-};
+// userSchema.statics.authenticate = function (formData, callback) {
+//   // this refers to the model!
+//   this.findOne({
+//     name: formData.name
+//   },
+//   function (err, user) {
+//     if (user === null){
+//       callback("Invalid name or password",null);
+//     }
+//     else {
+//       user.checkPassword(formData.password, callback);
+//     }
+//   });
+// };
 
-//PASSWORD MATCHING
-userSchema.methods.checkPassword = function(password, callback) {
-  var user = this;
-  bcrypt.compare(password, user.password, function (err, isMatch) {
-    if (isMatch) {
-      callback(null, user);
-    } else {
-      callback(err, null);
-    }
-  });
-};
+// //PASSWORD MATCHING
+// userSchema.methods.checkPassword = function(password, callback) {
+//   var user = this;
+//   bcrypt.compare(password, user.password, function (err, isMatch) {
+//     if (isMatch) {
+//       callback(null, user);
+//     } else {
+//       callback(err, null);
+//     }
+//   });
+// };
 /***** END LOCAL STRATEGY ***************************/
 
 

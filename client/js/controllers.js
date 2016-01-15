@@ -1,4 +1,4 @@
-app.controller("MainController", function($scope,currentUser,UserService,$auth){
+app.controller("MainController", function($scope,$auth){
   console.log("WORKING!");
 
 // Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
@@ -11,7 +11,8 @@ app.controller("MainController", function($scope,currentUser,UserService,$auth){
 app.controller("LoginController", function($scope, $auth, $location, UserService){
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
-      .then(function() {
+      .then(function(res) {
+        debugger
         console.log('You have successfully signed in with ' + provider + '!');
         $location.path('/home');
       })
@@ -31,7 +32,7 @@ app.controller("LoginController", function($scope, $auth, $location, UserService
   $scope.login = function(user){
     $auth.login(user).then(function(data){
       UserService.setCurrentUser(data);
-      $location.path('/');
+      $location.path('/home');
     }).catch(function(data){
       $scope.errors = data.data;
     });
@@ -61,19 +62,23 @@ app.controller('SignupController', function($scope, $location, $auth, UserServic
           console.log(response);
         });
     };
-
-
-
-    //   // Signing up locally
-    //   $scope.signupLocal = function(user){
-    //     console.log("BEFORE SIGNUP",user);
-    //   UserService.signup(user).then(function(data){
-    //     UserService.setCurrentUser(data);
-    //     console.log("AFTER SIGNUP",user);
-    //     $location.path('/home');
-    //   }).catch(function(data){
-    //     $scope.errors = data.data;
-    //   });
-    // };
-    // console.log("signup controller!");
-  });
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider)
+        .then(function(res) {
+          debugger
+          console.log('You have successfully signed in with ' + provider + '!');
+          $location.path('/home');
+        })
+        .catch(function(error) {
+          if (error.error) {
+            // Popup error - invalid redirect_uri, pressed cancel button, etc.
+            console.log(error.error);
+          } else if (error.data) {
+            // HTTP response error from server
+            console.log(error.data.message, error.status);
+          } else {
+            console.log(error);
+          }
+        });
+    };
+});

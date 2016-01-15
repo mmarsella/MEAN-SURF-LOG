@@ -8,10 +8,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     // if promise is resolves, do all this,
     // if rejected, go to .otherwise
     resolve: {
-      loginRequired: loginRequired,
-      currentUser : function(UserService) {
-      return UserService.getCurrentUser();
-    }
+      loginRequired: loginRequired
     }
   })
   .when('/', {

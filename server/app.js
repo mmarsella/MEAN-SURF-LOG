@@ -16,7 +16,7 @@ app.use('/css',express.static(path.join(__dirname, '../client/css')));
 app.use('/js',express.static(path.join(__dirname, '../client/js')));
 app.use('/templates',express.static(path.join(__dirname, '../client/js/templates')));
 
-app.use('/api/users', routes.users);
+// app.use('/api/users', routes.users);
 app.use('/api/auth', routes.auth);
 
 app.get('*', function(req, res) {
