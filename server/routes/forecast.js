@@ -1,3 +1,6 @@
+require('dotenv').load();  // for env variables
+
+
 var express = require("express");
 var router = express.Router();
 var request = require("request");
@@ -8,7 +11,7 @@ var moment = require('moment');
 
 router.get('/retrieve', function(req,res){
   console.log("INSIDE FORECAST!");
-  request.get("http://magicseaweed.com/api/f5e9d01ddf1135ef003bc9ebf35aed62/forecast/?spot_id=255", function(err,resp,body){
+  request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=255", function(err,resp,body){
     var forecast = JSON.parse(body);
     console.log("THE FORECAST\n\n\n\n",forecast[0]);
     res.format({
