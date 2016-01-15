@@ -15,12 +15,15 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     controller: "LoginController",
     templateUrl: "templates/login.html",
     resolve: {
-      skipIfLoggedIn: skipIfLoggedIn
+      skipIfLoggedIn: skipIfLoggedIn,
+        currentUser : function(UserService) {
+      return UserService.getCurrentUser();
+    }
     }
   })
   .when('/signup', {
     controller: "SignupController",
-    templateUrl: "templates/login.html",
+    templateUrl: "templates/signup.html",
     resolve: {
       skipIfLoggedIn: skipIfLoggedIn
     }
@@ -41,6 +44,12 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
 
   //$auth comes from satellizer
   // handles login/logout etc....
+
+
+// THESE HANDLE $auth checking
+
+// NOT CHECKING FOR LOCAL USER
+
 
   function skipIfLoggedIn($q, $auth, $location) {
       var deferred = $q.defer();
