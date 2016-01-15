@@ -8,7 +8,10 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     // if promise is resolves, do all this,
     // if rejected, go to .otherwise
     resolve: {
-      loginRequired: loginRequired
+      loginRequired: loginRequired,
+      currentUser : function(UserService) {
+      return UserService.getCurrentUser();
+    }
     }
   })
   .when('/', {
@@ -16,9 +19,6 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     templateUrl: "templates/login.html",
     resolve: {
       skipIfLoggedIn: skipIfLoggedIn,
-        currentUser : function(UserService) {
-      return UserService.getCurrentUser();
-    }
     }
   })
   .when('/signup', {
@@ -41,6 +41,8 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     url: '/api/auth/facebook'
   });
 
+  $authProvider.loginUrl = 'api/auth/login';
+  $authProvider.signupUrl = 'api/auth/signup';
 
   //$auth comes from satellizer
   // handles login/logout etc....

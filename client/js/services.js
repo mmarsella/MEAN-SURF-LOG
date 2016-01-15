@@ -1,7 +1,7 @@
 app.service("UserService", function($http, $window){
   return {
     signup: function(user){
-      return $http.post('/api/users/signup',user);
+      return $http.post('/api/auth/signup',user);
     },
     login: function(user){
       return $http.post('/api/users/login',user);
@@ -13,8 +13,8 @@ app.service("UserService", function($http, $window){
     getCurrentUser: function(){
       return JSON.parse($window.localStorage.getItem("user"));
     },
-      logout: function(){
-      $window.localStorage.clear();
+    logout: function(){
+    $window.localStorage.clear();
     },
     getAllUsers: function(){
       return $http.get("/api/users/");
@@ -28,13 +28,5 @@ app.service("UserService", function($http, $window){
     removeUser: function(user){
       return $http.delete("/api/users/" + user.id);
     }
-
-  
-
-
-
-
   }
-
-
 });

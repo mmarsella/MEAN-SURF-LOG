@@ -1,6 +1,10 @@
-app.controller("MainController", function($scope,currentUser,UserService){
+app.controller("MainController", function($scope,currentUser,UserService,$auth){
   console.log("WORKING!");
-  $scope.currentUser = currentUser;
+
+// Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
+
+  $scope.currentUser = $auth.getPayload().user;
+  // console.log($scope.currentUser);
 
 });
 
@@ -54,7 +58,7 @@ app.controller('SignupController', function($scope, $location, $auth, UserServic
           console.log('You have successfully created a new account and have been signed-in');
         })
         .catch(function(response) {
-          console.log(response.data.message);
+          console.log(response);
         });
     };
 

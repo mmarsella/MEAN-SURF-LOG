@@ -16,7 +16,8 @@ function createJWT(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
+    exp: moment().add(14, 'days').unix(),
+    user: user  //storing the user object
   };
 
   return jwt.sign(payload, process.env.JWT_SECRET);
@@ -95,8 +96,11 @@ router.post('/facebook', function(req, res) {
  | Log in with Email
  |--------------------------------------------------------------------------
  */
-router.post('/auth/login', function(req, res) {
-  User.findOne({ email: req.body.email }, '+password', function(err, user) {
+
+/*** WHY IS THERE NO db.User??*****/
+
+router.post('/login', function(req, res) {
+  db.User.findOne({ email: req.body.email }, '+password', function(err, user) {
     if (!user) {
       return res.status(401).send({ message: 'Invalid email and/or password' });
     }
@@ -114,12 +118,12 @@ router.post('/auth/login', function(req, res) {
  | Create Email and Password Account
  |--------------------------------------------------------------------------
  */
-router.post('/auth/signup', function(req, res) {
-  User.findOne({ email: req.body.email }, function(err, existingUser) {
+router.post('/signup', function(req, res) {
+  db.User.findOne({ email: req.body.email }, function(err, existingUser) {
     if (existingUser) {
       return res.status(409).send({ message: 'Email is already taken' });
     }
-    var user = new User({
+    var user = new db.User({
       displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
