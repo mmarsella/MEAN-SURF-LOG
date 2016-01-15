@@ -37,9 +37,6 @@ app.service("Forecast", function($http){
       console.log("INSIDE FORECAST SERVICE");
       return $http.get('/api/forecast/retrieve');
     }
-
-
   }
-
-
 });
+
