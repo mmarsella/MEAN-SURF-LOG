@@ -30,3 +30,16 @@ app.service("UserService", function($http, $window){
     }
   }
 });
+
+app.service("Forecast", function($http){
+  return {
+    getForecast: function(){
+      console.log("INSIDE FORECAST SERVICE");
+      return $http.get('/api/forecast/retrieve');
+    }
+
+
+  }
+
+
+});

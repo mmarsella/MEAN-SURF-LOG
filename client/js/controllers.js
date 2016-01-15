@@ -1,10 +1,20 @@
-app.controller("MainController", function($scope,$auth){
+app.controller("MainController", function($scope,$auth, Forecast){
   console.log("WORKING!");
 
-// Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
-
+  // $auth.getPayload()
+  // Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
   $scope.currentUser = $auth.getPayload().user;
   // console.log($scope.currentUser);
+
+
+  // An $http service returns a promise.
+  // .then handles the data inside the promise
+  // the data in the callback is what has been resolved
+  // and returned from the API
+  Forecast.getForecast().then(function(resp){
+    $scope.forecast = resp;
+
+  });
 
 });
 
@@ -65,7 +75,6 @@ app.controller('SignupController', function($scope, $location, $auth, UserServic
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
         .then(function(res) {
-          debugger
           console.log('You have successfully signed in with ' + provider + '!');
           $location.path('/home');
         })
