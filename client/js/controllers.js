@@ -19,12 +19,10 @@ app.controller("MainController", function($scope,$auth, ForecastService, LogServ
     console.log("INSIDE ADD LOG", log);
     LogService.createLog(log).then(function(log){
       console.log("SUCCESS");
+      $scope.logs.push(log);  // updates the logs on page w/o refresh!
       $scope.log = {};
     });
   }
-
-
-
 });
 
 app.controller("LoginController", function($scope, $auth, $location, UserService){
