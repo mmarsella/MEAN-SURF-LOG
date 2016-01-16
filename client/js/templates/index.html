@@ -1,9 +1,54 @@
 <h1>Logged in!</h1>
 
-<h2>Current User is {{currentUser.displayName}}</h2>
+<h2>Current User is {{currentUser}}</h2>
+
+<h4>CREATE LOG</h4>
+
+      <form name="postForm" class="text-center" ng-submit="addLog(log)" novalidate>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Time</span>
+          <input type="time" class="form-control" placeholder="When did you get in.." aria-describedby="basic-addon1"name="log[time]" id="time" ng-model="log.time" required>
+        </div>
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Duration</span>
+          <input type="number" class="form-control" placeholder="In minutes..." aria-describedby="basic-addon1"name="log[duration]" id="duration" ng-model="log.duration" required>
+        </div>
+           <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Rating</span>
+          <input type="number" class="form-control" placeholder="1-10" aria-describedby="basic-addon1"name="log[rating]" id="rating" ng-model="log.rating" required>
+        </div>
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Description</span>
+          <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="log.description" required>
+        </div>
+             <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Location</span>
+          <select class="form-control" name="log[location]" ng-model="log.location">
+              <option value="South Ocean Beach">South Ocean Beach</option>
+              <option value="North Ocean Beach">North Ocean Beach</option>
+              <option value="Kellys Cove">Kellys Cove</option>
+              <option value="Linda Mar">Linda Mar</option>
+              <option value="Montara">Montara</option>
+              <option value="Princeton Jetty">Princeton Jetty</option>
+          </select>
+         <!--  <input type="text" class="form-control" placeholder="What spot.." aria-describedby="basic-addon1"name="log[location]" id="location" required> -->
+        </div>
+        <br>
+         <input type="submit" class="btn btn-success" ng-disabled="postForm.$invalid">
+      <!--   <button class="btn-lg btn-success">POST</button> -->
+      </form>
+
+
 
 <h4>THE FORECAST</h4>
 
 {{forecast.data}}
+
+
+<h3>Logs</h3>
+
+{{logs}}
+
+
 
 <a href="/logout">Logout</a>

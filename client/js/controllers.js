@@ -1,20 +1,29 @@
-app.controller("MainController", function($scope,$auth, Forecast){
-  console.log("WORKING!");
+app.controller("MainController", function($scope,$auth, ForecastService, LogService,logs){
 
   // $auth.getPayload()
   // Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
   $scope.currentUser = $auth.getPayload().user;
-  // console.log($scope.currentUser);
 
-
-  // An $http service returns a promise.
-  // .then handles the data inside the promise
-  // the data in the callback is what has been resolved
-  // and returned from the API
-  Forecast.getForecast().then(function(resp){
+  // An $http service returns a promise. --> then handles the data inside the promise
+  // the data in the callback is what has been resolved and returned from the API
+  ForecastService.getForecast().then(function(resp){
     $scope.forecast = resp;
-
   });
+
+  $scope.log = {};
+  $scope.logs = logs;
+  console.log("CONTROLLER",$scope.logs);
+
+  $scope.addLog = function(log){
+    log.user = $scope.currentUser.id;
+    console.log("INSIDE ADD LOG", log);
+    LogService.createLog(log).then(function(log){
+      console.log("SUCCESS");
+      $scope.log = {};
+    });
+  }
+
+
 
 });
 

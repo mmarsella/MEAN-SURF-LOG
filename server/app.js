@@ -19,6 +19,7 @@ app.use('/templates',express.static(path.join(__dirname, '../client/js/templates
 // app.use('/api/users', routes.users);
 app.use('/api/auth', routes.auth);
 app.use('/api/forecast', routes.forecast);
+app.use('/api/log', routes.log);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));

@@ -31,12 +31,31 @@ app.service("UserService", function($http, $window){
   }
 });
 
-app.service("Forecast", function($http){
+app.service("ForecastService", function($http){
   return {
     getForecast: function(){
-      console.log("INSIDE FORECAST SERVICE");
+      // console.log("INSIDE FORECAST SERVICE");
       return $http.get('/api/forecast/retrieve');
     }
   }
 });
 
+app.service("LogService", function($http){
+  return{
+    createLog: function(log){
+      console.log("LOGSERVICE BEFORE",log);
+      //req.body = log
+      return $http.post('/api/log',log).then(function(resp){
+        console.log("LOGSERVICE:",resp);
+        return resp.data;
+      })
+    },
+    getLogs: function(){
+      console.log("INSIDE GET LOGS SERVICE");
+      return $http.get('/api/log').then(function(resp){
+        console.log("RESP DATA:",resp.data);
+        return resp.data;
+      });
+    }
+  }
+});

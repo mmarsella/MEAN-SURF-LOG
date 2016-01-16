@@ -8,6 +8,9 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     // if promise is resolves, do all this,
     // if rejected, go to .otherwise
     resolve: {
+        logs: function(LogService){
+        return LogService.getLogs();
+      },
       loginRequired: loginRequired
     }
   })
