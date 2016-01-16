@@ -1,4 +1,4 @@
-var app = angular.module("surfLog", ['ngRoute','satellizer']);
+var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar','ui.bootstrap']);
 
 app.config(function($routeProvider, $locationProvider, $authProvider){
   $routeProvider

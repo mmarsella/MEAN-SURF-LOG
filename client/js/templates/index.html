@@ -2,6 +2,9 @@
 
 <h2>Current User is {{currentUser}}</h2>
 
+
+<div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+
 <h4>CREATE LOG</h4>
 
       <form name="postForm" class="text-center" ng-submit="addLog(log)" novalidate>
@@ -37,6 +40,8 @@
          <input type="submit" class="btn btn-success" ng-disabled="postForm.$invalid">
       <!--   <button class="btn-lg btn-success">POST</button> -->
       </form>
+
+
 
 
 

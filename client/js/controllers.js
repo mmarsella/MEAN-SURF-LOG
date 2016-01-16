@@ -1,7 +1,37 @@
-app.controller("MainController", function($scope,$auth, ForecastService, LogService,logs){
 
-  // $auth.getPayload()
-  // Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
+// USER DASHBOARD
+app.controller("MainController", function($scope,$auth, ForecastService, LogService,logs){
+  $scope.log = {};
+  $scope.logs = logs;
+  $scope.eventSources = []; //FULL CALENDAR EVENTS
+
+      /* config object */
+  $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        editable: true,
+        header:{
+          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        },
+        dayClick: $scope.alertEventOnClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize
+      }
+    };
+
+    $scope.calendarConfig = {
+    calendar:{
+        height: "100%",
+        viewRender: function(view, element) {
+            $log.debug("View Changed: ", view.visStart, view.visEnd, view.start, view.end);
+        }
+    }
+};
+
+
+  // $auth.getPayload() --> Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
   $scope.currentUser = $auth.getPayload().user;
 
   // An $http service returns a promise. --> then handles the data inside the promise
@@ -10,9 +40,6 @@ app.controller("MainController", function($scope,$auth, ForecastService, LogServ
     $scope.forecast = resp;
   });
 
-  $scope.log = {};
-  $scope.logs = logs;
-  console.log("CONTROLLER",$scope.logs);
 
   $scope.addLog = function(log){
     log.user = $scope.currentUser.id;
@@ -24,6 +51,15 @@ app.controller("MainController", function($scope,$auth, ForecastService, LogServ
     });
   }
 });
+
+
+
+
+
+
+
+
+
 
 app.controller("LoginController", function($scope, $auth, $location, UserService){
   $scope.authenticate = function(provider) {
