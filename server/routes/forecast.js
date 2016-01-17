@@ -21,6 +21,18 @@ Thu Jan 21 2016 13:00:00 GMT-0800 (PST)
 
 NEED TO TURN INTO A BACKGROUND JOB!
 
+// To associate log w/ forecast
+
+d.getHours()
+1
+d.getDay()
+2
+d.getYear()
+116
+
+Create a date obj "time" in logs... needs to be a UNIX timestamp
+
+
 ****/
 
 router.get('/retrieve', function(req,res){
@@ -30,6 +42,7 @@ router.get('/retrieve', function(req,res){
 
     response.forEach(function(el){
       var forecast = new db.Forecast(el);
+      forecast.date = new Date(el.localTimestamp * 1000);
       forecast.save();
     });
 

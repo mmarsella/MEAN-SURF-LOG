@@ -13,7 +13,6 @@ The forecast info will be used to create user-logs.
 var mongoose = require("mongoose");
 
 /****** FORECAST SCHEMA *******/
-
 var forecastSchema = new mongoose.Schema({
   localTimestamp: Number,
   date: Date,
@@ -29,7 +28,7 @@ var forecastSchema = new mongoose.Schema({
     direction: Number,
     compassDirection: String,
     chill: Number,
-    gusts: Number
+    gusts: Number,
     unit: String
   },
   condition: {
@@ -47,8 +46,6 @@ var forecastSchema = new mongoose.Schema({
     sst: String
   }
 });
-
-
 /********* EXPORTS *********/
 
 var Forecast = mongoose.model("Forecast", forecastSchema);
