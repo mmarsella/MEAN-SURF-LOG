@@ -22,3 +22,33 @@ Context:  Including script tags in my index.html like so:
 
 
   -----------------------------------------------------------------
+
+  TO DO:
+
+  1) Get bootstrap to work with fullCalendar
+  \__ ui-bootstrap vs. reg bootstrap?
+  \___ Custom directives...
+
+  2) Create API Button to make call to populate 
+     forecast db w/ 24 hours of current day forecast.
+
+  3)  Modify Log create to pull from forecast db.
+
+  4)  Event Clicks w/ fullCalendar
+  \___ Show Page is on event click
+    \___ FULL CRUD in Show Page
+
+  -->  START STYLING HERE
+
+  BONUS:  When user clicks a non-event area, prompts to create log.
+
+  5)  Get current Forecast to work
+
+  6)  Chart.js
+
+  7)  Follow friends
+
+  8)  View friend stats
+
+  9)  Web Sockets Chat
+
