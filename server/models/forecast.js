@@ -20,17 +20,20 @@ var forecastSchema = new mongoose.Schema({
   time: String,
   fadedRating: Number,
   solidRating: Number,
-  absMinBreakingHeight: Number,
-  absMaxBreakingHeight: Number,
+  minBreakingHeight: Number,  // Use this for text display.
+  absMinBreakingHeight: Number, // Use this for smooth graphing.
+  maxBreakingHeight: Number, // Use this for text display.
+  absMaxBreakingHeight: Number, // Use this for smooth graphing.
   wind: {
-    speed: String,
-    direction: String,
+    speed: Number,
+    direction: Number,
     compassDirection: String,
-    chill: String,
-    gusts: String
+    chill: Number,
+    gusts: Number
+    unit: String
   },
   condition: {
-    pressure: String,
+    pressure: Number,
     temperature: Number,
     weather: Number,
     unitPressure: String,

@@ -10,6 +10,19 @@ var moment = require('moment');
 
 
 
+/***
+Pulled at SUN at 12AM
+
+Ranges from:
+Sat Jan 16 2016 16:00:00 GMT-0800 (PST)
+-
+Thu Jan 21 2016 13:00:00 GMT-0800 (PST)
+-- response length is an array of 40 objects
+
+NEED TO TURN INTO A BACKGROUND JOB!
+
+****/
+
 router.get('/retrieve', function(req,res){
   console.log("INSIDE FORECAST!");
   request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=255", function(err,resp,body){
