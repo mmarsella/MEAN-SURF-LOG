@@ -4,15 +4,18 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
 
+  $scope.apiCall = function(){
+    // An $http service returns a promise. --> then handles the data inside the promise the data in the callback is what has been resolved and returned from the API
+    ForecastService.getForecast().then(function(resp){
+      $scope.forecast = resp;
+    });
+  }
+
 
   // $auth.getPayload() --> Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
   $scope.currentUser = $auth.getPayload().user;
 
-  // An $http service returns a promise. --> then handles the data inside the promise
-  // the data in the callback is what has been resolved and returned from the API
-  ForecastService.getForecast().then(function(resp){
-    $scope.forecast = resp;
-  });
+
 
 
   $scope.addLog = function(log){

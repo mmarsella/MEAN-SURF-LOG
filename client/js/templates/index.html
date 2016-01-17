@@ -1,5 +1,7 @@
 <h1>Logged in!</h1>
 
+<img ng-src="{{currentUser.picture}}"/>
+
 
 
 
@@ -60,6 +62,8 @@
 
 
 <h4>THE FORECAST</h4>
+
+<button ng-click="apiCall()" class="btn btn-success">API</button>
 
 {{forecast.data}}
 

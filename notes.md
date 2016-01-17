@@ -25,9 +25,9 @@ Context:  Including script tags in my index.html like so:
 
   TO DO:
 
-  1) Get bootstrap to work with fullCalendar
+ <!--  1) Get bootstrap to work with fullCalendar
   \__ ui-bootstrap vs. reg bootstrap?
-  \___ Custom directives...
+  \___ Custom directives... -->
 
   2) Create API Button to make call to populate 
      forecast db w/ 24 hours of current day forecast.
@@ -45,6 +45,11 @@ Context:  Including script tags in my index.html like so:
   5)  Get current Forecast to work
 
   6)  Chart.js
+
+  7a)  User ACCOUNT
+  \___ Link social media
+  \___ Edit Account settings
+  \___ Add pic with upload care
 
   7)  Follow friends
 
