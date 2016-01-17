@@ -16,12 +16,14 @@ var mongoose = require("mongoose");
 
 var forecastSchema = new mongoose.Schema({
   localTimestamp: Number,
+  date: Date,
+  time: String,
   fadedRating: Number,
   solidRating: Number,
   absMinBreakingHeight: Number,
   absMaxBreakingHeight: Number,
   wind: {
-    speed, String,
+    speed: String,
     direction: String,
     compassDirection: String,
     chill: String,

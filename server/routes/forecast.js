@@ -9,15 +9,23 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 
 
+
 router.get('/retrieve', function(req,res){
   console.log("INSIDE FORECAST!");
   request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=255", function(err,resp,body){
-    var forecast = JSON.parse(body);
-    console.log("THE FORECAST\n\n\n\n",forecast[0]);
+    var response = JSON.parse(body);
+
+    response.forEach(function(el){
+      var forecast = new db.Forecast(el);
+      forecast.save();
+    });
+
+
+    console.log("THE FORECAST\n\n\n\n",response.length);
     res.format({
       'application/json': function(){
         console.log("Sending back the forecast");
-        res.send(forecast[0]);
+        res.send(response[0]);
       },
       'default': function(){
         // log the request and respond with 406
