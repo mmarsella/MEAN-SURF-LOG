@@ -10,7 +10,7 @@ var moment = require('moment');
 
 
 //GET ALL LOGS
-router.get('/', function(req,res){
+router.post('/', function(req,res){
   console.log("THE BODY\n\n",req.body);
   console.log("INSIDE GET ALL LOGS!");
   db.Log.find({}, function (err,logs){
@@ -29,13 +29,11 @@ router.get('/', function(req,res){
 
 //CREATE LOG
 router.post("/", function (req,res){
-  console.log("INSIDE CREATE LOG!");
-
   // req.body is the "log" passed from the LogService in services
   db.Log.create(req.body, function (err,log){
     log.user = req.body.user;
     console.log("REQ.BODY!",req.body);
-    console.log("THE LOG",log);
+    console.log("THE LOG",log); 
     if(err){
       console.log(err);
       res.status(404).send("ERROR!");
@@ -44,7 +42,6 @@ router.post("/", function (req,res){
     }
   })
 });
-
 
 //Delete a log
 

@@ -38,6 +38,27 @@ Context:  Including script tags in my index.html like so:
   OR 
 
   Try to add the $auth.getPayload() into the resolves before calling the getLog() to have access to the user....  pro's v con's???
+
+
+  Sunday 8:45pm:
+
+  Still can't send over currentUser to my server through my getLogs Service.... 
+
+  RESOLVED:  
+
+  In services:
+
+  changed -->       return $http.get('/api/log',user)\
+
+  to
+
+  return $http.POST('/api/log',user)
+
+  Changing it to a POST request allows me to send/gain access to req.body on the server... 
+
+  Question:  Do GET requests normally not have req.bodys???? 
+
+ 
   
 
 

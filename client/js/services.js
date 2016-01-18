@@ -51,10 +51,12 @@ app.service("LogService", function($http,$auth){
       })
     },
     getLogs: function(){
+      // 1/17/2016
       // UNABLE TO SEND OVER AS req.body!  Always results in {}
+     // IS THIS b/c ITS A GET REQUEST????
       user = $auth.getPayload().user;
       console.log("INSIDE GET LOGS SERVICE", user);
-      return $http.get('/api/log',user).then(function(resp){
+      return $http.post('/api/log',user).then(function(resp){
         console.log("RESP DATA:",resp.data);
         return resp.data;
       });
