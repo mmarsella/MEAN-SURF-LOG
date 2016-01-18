@@ -19,7 +19,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 
 
   $scope.addLog = function(log){
+
     log.user = $scope.currentUser._id;
+    console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
     console.log("INSIDE ADD LOG", log);
     LogService.createLog(log).then(function(log){
       console.log("SUCCESS");

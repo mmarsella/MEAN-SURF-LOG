@@ -45,7 +45,7 @@ app.service("LogService", function($http,$auth){
     createLog: function(log){
       console.log("LOGSERVICE BEFORE",log);
       //req.body = log
-      return $http.post('/api/log',log).then(function(resp){
+      return $http.post('/api/log/create',log).then(function(resp){
         console.log("LOGSERVICE:",resp);
         return resp.data;
       })

@@ -7,14 +7,23 @@ var request = require("request");
 var db = require('../models/');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
-
+var user;
 
 //GET ALL LOGS
 router.post('/', function(req,res){
-  console.log("THE BODY\n\n",req.body);
-  console.log("INSIDE GET ALL LOGS!");
-  db.Log.find({}, function (err,logs){
-    console.log("LOGS:",logs)
+  console.log("THE BODY IN LOG.JS\n\n",req.body);
+  if(req.body._id){
+    user = req.body._id;
+  }else{
+    user = req.body.user;
+  }
+
+//Find logs by user id
+  db.Log.find({user:user}, function (err,logs){
+    console.log("LOGS from USER:",logs)
+    if(err){
+      console.log(err);
+    }
     res.format({
       'application/json': function(){
         res.send(logs);  //sending back 11am forecast
@@ -27,8 +36,16 @@ router.post('/', function(req,res){
   });
 });
 
+// CAN"T FOLLOW RESTFUL routing due to having to pass 
+// user in for the first route --> '/'.
+
 //CREATE LOG
-router.post("/", function (req,res){
+router.post("/create", function (req,res){
+  if(req.body._id){
+    user = req.body._id;
+  }else{
+    user = req.body.user;
+  }
   // req.body is the "log" passed from the LogService in services
   db.Log.create(req.body, function (err,log){
     log.user = req.body.user;
