@@ -60,20 +60,6 @@ Context:  Including script tags in my index.html like so:
 
   NOTE:  Log.js cannot follow RESTful routing due to this work around...
 
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
 
   TO DO:
 

@@ -45,18 +45,17 @@ app.service("LogService", function($http,$auth){
     createLog: function(log){
       console.log("LOGSERVICE BEFORE",log);
       //req.body = log
-      return $http.post('/api/log/create',log).then(function(resp){
+      return $http.post('/api/log/',log).then(function(resp){
         console.log("LOGSERVICE:",resp);
         return resp.data;
       })
     },
-    getLogs: function(){
+    getLogs: function(user){
       // 1/17/2016
       // UNABLE TO SEND OVER AS req.body!  Always results in {}
      // IS THIS b/c ITS A GET REQUEST????
-      user = $auth.getPayload().user;
       console.log("INSIDE GET LOGS SERVICE", user);
-      return $http.post('/api/log',user).then(function(resp){
+      return $http.post('/api/log/getLogs',user).then(function(resp){
         console.log("RESP DATA:",resp.data);
         return resp.data;
       });

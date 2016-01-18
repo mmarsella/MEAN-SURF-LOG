@@ -1,5 +1,7 @@
 var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar','ui.bootstrap']);
 
+
+// Config takes in providers.  $auth isn't a provider!
 app.config(function($routeProvider, $locationProvider, $authProvider){
   $routeProvider
   .when('/home', {
@@ -8,9 +10,13 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     // if promise is resolves, do all this,
     // if rejected, go to .otherwise
     resolve: {
-        logs: function(LogService){
-        return LogService.getLogs();
-      },
+        // user: getCurrentUser,
+        logs: function(LogService,$q,$auth){
+          return getCurrentUser($q,$auth).then(function(user){
+            return LogService.getLogs(user);
+          })
+        },
+      // },
       loginRequired: loginRequired
     }
   })
@@ -73,4 +79,21 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
       }
       return deferred.promise;
     }
+
+    function getCurrentUser($q, $auth){
+      var deferred = $q.defer();
+      var user = $auth.getPayload().user;
+      if(user){
+        deferred.resolve(user);
+      }else{
+        console.log("USER WAS NOT FOUND!");
+        deferred.reject();
+      }
+      return deferred.promise;
+
+    }
 });
+
+
+
+

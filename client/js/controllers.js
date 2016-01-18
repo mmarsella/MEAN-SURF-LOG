@@ -4,6 +4,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
 
+
+  console.log("HEREE'S THE USER", logs);
+
   $scope.apiCall = function(){
     // An $http service returns a promise. --> then handles the data inside the promise the data in the callback is what has been resolved and returned from the API
     ForecastService.getForecast().then(function(resp){
@@ -155,21 +158,10 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 });  // END CONTROLLER
 
 
-
-
-
-
-
-
-
-
-
-
 app.controller("LoginController", function($scope, $auth, $location, UserService){
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
       .then(function(res) {
-        debugger
         console.log('You have successfully signed in with ' + provider + '!');
         $location.path('/home');
       })

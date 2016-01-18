@@ -17,7 +17,6 @@ var logSchema = new mongoose.Schema({
    
   // REF / EMBED FORECAST DATA HERE  --> SUNDAY
 
-
 });
 
 /******** EXPORTS *********/

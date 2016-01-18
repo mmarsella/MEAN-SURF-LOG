@@ -10,7 +10,7 @@ var moment = require('moment');
 var user;
 
 //GET ALL LOGS
-router.post('/', function(req,res){
+router.post('/getLogs', function(req,res){
   console.log("THE BODY IN LOG.JS\n\n",req.body);
   if(req.body._id){
     user = req.body._id;
@@ -40,7 +40,7 @@ router.post('/', function(req,res){
 // user in for the first route --> '/'.
 
 //CREATE LOG
-router.post("/create", function (req,res){
+router.post("/", function (req,res){
   if(req.body._id){
     user = req.body._id;
   }else{
