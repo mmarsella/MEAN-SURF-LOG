@@ -15,7 +15,7 @@ var logSchema = new mongoose.Schema({
 
   /***** FORECAST DATA FROM THE DB ******/
    
-  // REF / EMBED FORECAST DATA HERE
+  // REF / EMBED FORECAST DATA HERE  --> SUNDAY
 
 
 });

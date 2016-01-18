@@ -11,6 +11,7 @@ var moment = require('moment');
 
 //GET ALL LOGS
 router.get('/', function(req,res){
+  console.log("the body",req.body);
   console.log("INSIDE GET ALL LOGS!");
   db.Log.find({}, function (err,logs){
     console.log("LOGS:",logs)

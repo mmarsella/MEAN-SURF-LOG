@@ -1,5 +1,9 @@
 1/16/2016
 
+            _________
+    -------| BUG LOG |--------
+            ---------
+
 /** BOWER COMPONENTS***/
 
 Error:  Uncaught SyntaxError: Unexpected token <
@@ -21,7 +25,32 @@ Context:  Including script tags in my index.html like so:
   Status:  RESOLVED
 
 
-  -----------------------------------------------------------------
+  ------------------------------------------------------
+
+  /*** RESOLVES IN ROUTER ***/
+
+  ERROR:  Injector module ....
+
+  Context:  Trying to pass currentUser's id through $auth.getPayload().user._id within a getLogs resolve to gain access to ONLY logs that the user owns.  $auth is not recognized in the injections.
+
+  Possible solutions:  I can either move the getLogs() resolve into the mainController and then I would have access to the user._id.  
+
+  OR 
+
+  Try to add the $auth.getPayload() into the resolves before calling the getLog() to have access to the user....  pro's v con's???
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
   TO DO:
 
@@ -41,6 +70,9 @@ Context:  Including script tags in my index.html like so:
   4)  Event Clicks w/ fullCalendar
   \___ Show Page is on event click
     \___ FULL CRUD in Show Page
+
+
+  5) A user has many logs.  When a user goes to their dash, populate the user's logs onto the calendar.
 
   -->  START STYLING HERE
 
