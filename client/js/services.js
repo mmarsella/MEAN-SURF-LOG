@@ -40,7 +40,7 @@ app.service("ForecastService", function($http){
   }
 });
 
-app.service("LogService", function($http){
+app.service("LogService", function($http,$auth){
   return{
     createLog: function(log){
       console.log("LOGSERVICE BEFORE",log);
@@ -51,8 +51,9 @@ app.service("LogService", function($http){
       })
     },
     getLogs: function(){
-      console.log("INSIDE GET LOGS SERVICE");
-      return $http.get('/api/log').then(function(resp){
+      var user = $auth.getPayload().user;
+      console.log("INSIDE GET LOGS SERVICE",user);
+      return $http.get('/api/log',user).then(function(resp){
         console.log("RESP DATA:",resp.data);
         return resp.data;
       });
