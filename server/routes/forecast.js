@@ -34,12 +34,16 @@ Create a date obj "time" in logs... needs to be a UNIX timestamp
 ****/
 
 router.get('/retrieve', function(req,res){
+
+  var spot_id = 255; // Ocean Beach
+
   console.log("INSIDE FORECAST!");
-  request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=255", function(err,resp,body){
+  request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=" + spot_id, function(err,resp,body){
     var response = JSON.parse(body);
 
     response.forEach(function(el){
       var forecast = new db.Forecast(el);
+      forecast.spot_id = spot_id;
       forecast.date = new Date(el.localTimestamp * 1000);
       forecast.save();
     });

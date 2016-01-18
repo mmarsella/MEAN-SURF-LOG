@@ -12,11 +12,10 @@ var logSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"User"
   },
-
+  forecast:{
+    type:mongoose.Schema.Types.ObjectId
+  }
   /***** FORECAST DATA FROM THE DB ******/
-   
-  // REF / EMBED FORECAST DATA HERE  --> SUNDAY
-
 });
 
 /******** EXPORTS *********/

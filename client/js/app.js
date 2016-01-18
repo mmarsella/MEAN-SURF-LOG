@@ -1,6 +1,5 @@
 var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar','ui.bootstrap']);
 
-
 // Config takes in providers.  $auth isn't a provider!
 app.config(function($routeProvider, $locationProvider, $authProvider){
   $routeProvider
@@ -10,13 +9,11 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     // if promise is resolves, do all this,
     // if rejected, go to .otherwise
     resolve: {
-        // user: getCurrentUser,
         logs: function(LogService,$q,$auth){
           return getCurrentUser($q,$auth).then(function(user){
             return LogService.getLogs(user);
           })
         },
-      // },
       loginRequired: loginRequired
     }
   })
@@ -56,9 +53,6 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
 
 // THESE HANDLE $auth checking
 
-// NOT CHECKING FOR LOCAL USER
-
-
   function skipIfLoggedIn($q, $auth, $location) {
       var deferred = $q.defer();
       if ($auth.isAuthenticated()) {
@@ -80,17 +74,17 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
       return deferred.promise;
     }
 
+    // Need to send back a promise to resolve.... use $q to handle promises
     function getCurrentUser($q, $auth){
-      var deferred = $q.defer();
+      var deferred = $q.defer(); // Creates a promise
       var user = $auth.getPayload().user;
       if(user){
-        deferred.resolve(user);
+        deferred.resolve(user); // sends back a user wrapped with a promise with a status of resolved
       }else{
         console.log("USER WAS NOT FOUND!");
-        deferred.reject();
+        deferred.reject(); // sends back with status of rejected
       }
-      return deferred.promise;
-
+      return deferred.promise; 
     }
 });
 
