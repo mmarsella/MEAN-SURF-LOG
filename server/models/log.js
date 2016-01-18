@@ -4,7 +4,8 @@ var User = require("./user");
 var logSchema = new mongoose.Schema({
   date:Date,
   time:String,
-  location:String,
+  spot_id: String,
+  spot_name: String,
   duration:Number,
   rating:Number,
   description:String,

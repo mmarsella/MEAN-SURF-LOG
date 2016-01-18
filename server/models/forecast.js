@@ -14,6 +14,8 @@ var mongoose = require("mongoose");
 
 /****** FORECAST SCHEMA *******/
 var forecastSchema = new mongoose.Schema({
+  spot_id: String,
+  spot_name: String,
   localTimestamp: Number,
   date: Date,
   time: String,
