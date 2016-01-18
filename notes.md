@@ -61,3 +61,50 @@ Context:  Including script tags in my index.html like so:
 
   9)  Web Sockets Chat
 
+
+/**** SPOT ID's*****/
+____________________
+NORTHERN CALIFORNIA|
+--------------------
+Bolinas --> 4221
+Bolinas Jetty--> 4215
+Eureka --> 302
+Klamath River --> 299
+Linda Mar / Pacifica --> 819
+Marin County --> 307
+Moonstone beach --> 301
+Ocean Beach - 255
+Patricks Point --> 300
+Point Arena --> 304
+Salmon Creek --> 306
+Secrets --> 305
+Shelter Cove --> 4083
+South Beach --> 298
+Stinson beach --> 4216
+Virgin Creek --> 303
+____________________
+CENTRAL CALIFORNIA  |
+---------------------
+
+Andrew Molera State Park --> 260
+Cambria --> 261
+Carmel Beach --> 666
+Cayucos --> 866
+Davenport Landing --> 256
+Four Mile --> 257
+Ghost Trees --> 825
+Manresa Beach --> 258
+Mavericks (Half Moon Bay) --> 162
+Monterey Bay Offshore --> 3734
+Morro Bay --> 262
+Moss Landing --> 259
+Oceano/Pismo --> 264
+Pico Creek --> 4423
+Pleasure Point --> 644
+Princeton Jetty --> 3679
+Saint Annes --> 263
+Sand Dollar Beach --> 4422
+Steamer Lane --> 163
+Waddell Creek --> 3742
+
+
