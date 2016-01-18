@@ -31,8 +31,6 @@ d.getYear()
 116
 
 Create a date obj "time" in logs... needs to be a UNIX timestamp
-
-
 ****/
 
 router.get('/retrieve', function(req,res){

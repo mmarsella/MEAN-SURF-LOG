@@ -29,10 +29,14 @@ Context:  Including script tags in my index.html like so:
   \__ ui-bootstrap vs. reg bootstrap?
   \___ Custom directives... -->
 
-  2) Create API Button to make call to populate 
-     forecast db w/ 24 hours of current day forecast.
+ <!--  2) Create API Button to make call to populate 
+     forecast db w/ 24 hours of current day forecast. -->
+
+     FOR TOMORROW --> SUNDAY
 
   3)  Modify Log create to pull from forecast db.
+  \___  Should match date, time and location --> within a 3 hour range.
+
 
   4)  Event Clicks w/ fullCalendar
   \___ Show Page is on event click
