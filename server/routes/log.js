@@ -9,6 +9,30 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var user;
 
+var spots = {4221:"Bolinas",
+             4215:"Bolinas Jetty", 
+             302: "Eureka",
+             299: "Klamath River",
+             819: "Linda Mar/Pacifica",
+             307: "Marin County",
+             301: "Moonstone Beach",
+             255: "Ocean Beach",
+             300: "Patrick's Point",
+             304: "Point Arena",
+             306: "Salmon Creek",
+             305: "Secrets",
+             4083: "Shelter Cove",
+             298: "South Beach",
+             4216: "Stinson Beach",
+             303: "Virgin Creek"
+              };
+
+var spot_ids = Object.keys(spots);
+
+function spotName(spot_id){
+    return spots[spot_id] || "Not a spot!";
+}
+
 //GET ALL LOGS
 router.post('/getLogs', function(req,res){
   console.log("THE BODY IN LOG.JS\n\n",req.body);
@@ -41,6 +65,7 @@ router.post('/getLogs', function(req,res){
 
 //CREATE LOG
 router.post("/", function (req,res){
+  console.log("REQ.BODY",req.body);
   if(req.body._id){
     user = req.body._id;
   }else{
@@ -48,9 +73,12 @@ router.post("/", function (req,res){
   }
   // req.body is the "log" passed from the LogService in services
   db.Log.create(req.body, function (err,log){
+
     log.user = req.body.user;
+    log.spot_name = spotName(req.body.spot_id);
     console.log("REQ.BODY!",req.body);
     console.log("THE LOG",log); 
+    log.save();
     if(err){
       console.log(err);
       res.status(404).send("ERROR!");
