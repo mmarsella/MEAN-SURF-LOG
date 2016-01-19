@@ -18,6 +18,8 @@ var forecastSchema = new mongoose.Schema({
   spot_name: String,
   localTimestamp: Number,
   date: Date,
+  hour: Number,
+  numDate: Number,
   time: String,
   fadedRating: Number,
   solidRating: Number,

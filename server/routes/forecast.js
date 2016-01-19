@@ -60,8 +60,6 @@ function spotName(spot_id){
 router.get('/retrieve', function(req,res){
 
   // iter. thru all spots and create a forecast
-
-  
     for(var i=0; i < spot_ids.length; i++){
       // close function (j) so I can immediately invoke it afterwards with i. Great example of scope and closure.
       (function(j){
@@ -70,6 +68,9 @@ router.get('/retrieve', function(req,res){
             console.log("Doing forecast... ");
             response.forEach(function(el){
               var forecast = new db.Forecast(el);
+              var d = new Date(el.date);
+              forecast.hour = d.getHours();
+              forecast.numDate = d.getDate();
               forecast.spot_id = parseInt(spot_ids[j]);
               forecast.spot_name = spotName(spot_ids[j]);
               forecast.date = new Date(el.localTimestamp * 1000);

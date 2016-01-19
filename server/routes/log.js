@@ -74,7 +74,30 @@ router.post("/", function (req,res){
   // req.body is the "log" passed from the LogService in services
   db.Log.create(req.body, function (err,log){
 
+    console.log("LOG TIME", log.time);
+    console.log("TIME TYPE", typeof log.time);
+    console.log("String?", log.time.toString());
+    console.log("LOG PARSED", log.time.split("-"));
+
+    var dateString = log.time.split("-")[2];
+
+    var d = new Date(req.body.time);
+    var month = d.getMonth();
+    console.log("MONTH", month);
+    var date = d.getDate();
+    console.log("D before crash", d);
+    var hour = d.toString().split(" ")[4].split(":")[0];
+    console.log("D",d);
+    // var hour = d.split(" ")[4][1];
+
+    // console.log("HOUR",hour);
+
+
     log.user = req.body.user;
+    // log.hour = hour;
+    log.numDate = date;
+    log.numMonth = month;
+    log.hour = hour
     log.spot_name = spotName(req.body.spot_id);
     console.log("REQ.BODY!",req.body);
     console.log("THE LOG",log); 
