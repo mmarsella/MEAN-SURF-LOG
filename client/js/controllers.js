@@ -53,7 +53,6 @@ console.log("Year: ", 2016);
     console.log("y",y);
 
 
-  
     /* event source that pulls from google.com */
     $scope.eventSources = {
             url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
@@ -61,9 +60,11 @@ console.log("Year: ", 2016);
             currentTimezone: 'America/Chicago' // an option!
     };
 
+
+
     /* event source that contains custom events on the scope */
     $scope.events = [
-      {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate) },
+      {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate), color:"red"},
       // {title: 'All Day Event',start: new Date(y, m, 1)},
       // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
       // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
@@ -73,6 +74,15 @@ console.log("Year: ", 2016);
     ];
 
 
+    for(var i=0; i<$scope.logs.length; i++){
+      var obj = {};
+      obj.title = $scope.logs[i].spot_name;
+      obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour),
+      obj.color = "blue"
+
+      $scope.events.push(obj);
+
+    }
 
 
 
@@ -95,7 +105,6 @@ console.log("Year: ", 2016);
     //       {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
     //     ]
     // };
-
 
 
 
