@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = require("./user");
+var Forecast = require("./forecast");
 
 var logSchema = new mongoose.Schema({
   date:Date,
@@ -16,9 +17,7 @@ var logSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"User"
   },
-  forecast:{
-    type:mongoose.Schema.Types.ObjectId
-  }
+  forecast: Object,
   /***** FORECAST DATA FROM THE DB ******/
 });
 

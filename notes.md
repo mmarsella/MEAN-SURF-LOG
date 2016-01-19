@@ -63,6 +63,14 @@ Context:  Including script tags in my index.html like so:
 
   TO DO:
 
+
+  FOR TUESDAY:  GET CREATE LOG TO LINK TO db.forecast.find.  
+
+  --> Everything is in the create log, just need to handle asynchronous behavior.
+  
+
+
+
  <!--  1) Get bootstrap to work with fullCalendar
   \__ ui-bootstrap vs. reg bootstrap?
   \___ Custom directives... -->
@@ -101,7 +109,6 @@ Context:  Including script tags in my index.html like so:
   8)  View friend stats
 
   9)  Web Sockets Chat
-
 
 
 

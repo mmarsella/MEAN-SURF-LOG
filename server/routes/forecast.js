@@ -97,8 +97,6 @@ router.get('/retrieve', function(req,res){
     res.send("COMPLETE IN FORECAST");
 
  
-
-
       // res.format({
       //   'application/json': function(){
       //     console.log("Sending back the forecast");

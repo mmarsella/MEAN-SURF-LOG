@@ -42,8 +42,10 @@ router.post('/getLogs', function(req,res){
     user = req.body.user;
   }
 
+//NEED TO POPULATE ALL LOGS
+
 //Find logs by user id
-  db.Log.find({user:user}, function (err,logs){
+  db.Log.find({user:user}).populate("forecasts").exec(function (err,logs){
     console.log("LOGS from USER:",logs)
     if(err){
       console.log(err);
@@ -128,33 +130,30 @@ router.post("/", function (req,res){
 
     // Find forecast based on closest hour, date and spot
     db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)}, function(err,forecast){
-      console.log("INSIDE FORECAST FIND FOR LOG...", forecast);
-      if(err){
-        console.log("Error with forecast find:",err);
+      console.log("INSIDE FORECAST FIND FOR LOG...", forecast[0]);
+      if(err || forecast.length <= 0){
+        // console.log("Error with forecast find:",err);
+        res.status(404).send("ERROR!");
       }else{
-        log.forecast = forecast._id;
-        log.save();
+        log.forecast = forecast[0];  // will save to the db as a ref.id to the forecast object
+        log.save(function(err){
+          if(err){
+            console.log("ERROR IN FORECAST",err);
+            res.status(404).send(err);
+          }
+          log.forecast = forecast[0];  //this will send back the whole forecast with the log
+          res.send(log);
+        });
       }
     });
+  });
+});
 
 
     /* This may need to be wrapped in a callback  or a .then....
 
 
     /* -------------------------------------------------------------*/
-
-
-
-
-
-    if(err){
-      console.log(err);
-      res.status(404).send("ERROR!");
-    }else{ 
-      res.send(log);
-    }
-  })
-});
 
 //Delete a log
 
