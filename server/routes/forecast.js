@@ -63,17 +63,21 @@ router.get('/retrieve', function(req,res){
     for(var i=0; i < spot_ids.length; i++){
       // close function (j) so I can immediately invoke it afterwards with i. Great example of scope and closure.
       (function(j){
-          request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=" + spot_ids[j], function(err,resp,body){
+        request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=" + spot_ids[j], function(err,resp,body){
             var response = JSON.parse(body);
             console.log("Doing forecast... ");
             response.forEach(function(el){
+              console.log("EL", el);
               var forecast = new db.Forecast(el);
-              var d = new Date(el.date);
+              var d = new Date(el.timestamp * 1000);
+              console.log("D",d);
+              forecast.year = d.getYear();
               forecast.hour = d.getHours();
               forecast.numDate = d.getDate();
-              forecast.spot_id = parseInt(spot_ids[j]);
+              forecast.numMonth = d.getMonth();
+              forecast.spot_id = spot_ids[j];
               forecast.spot_name = spotName(spot_ids[j]);
-              forecast.date = new Date(el.localTimestamp * 1000);
+              forecast.date = new Date(el.timestamp * 1000);
               forecast.save(function(err){
                 if(err){
                   console.log("ERROR IN SAVING!",err);
@@ -86,7 +90,9 @@ router.get('/retrieve', function(req,res){
           })  // END API REQUEST
          })(i);  // end j
         }  // end For-loop    
-    console.log("FINISHED!\n\n\n\n")
+    // console.log("FINISHED!\n\n\n\n")
+
+    
 
     res.send("COMPLETE IN FORECAST");
 

@@ -81,12 +81,14 @@ router.post("/", function (req,res){
 
     var dateString = log.time.split("-")[2];
 
-    var d = new Date(req.body.time);
+    var time = new Date(req.body.time);
+    var d = new Date(req.body.date);
     var month = d.getMonth();
     console.log("MONTH", month);
+    
     var date = d.getDate();
     console.log("D before crash", d);
-    var hour = d.toString().split(" ")[4].split(":")[0];
+    var hour = time.toString().split(" ")[4].split(":")[0];
     console.log("D",d);
     // var hour = d.split(" ")[4][1];
 
