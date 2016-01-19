@@ -63,6 +63,31 @@ router.post('/getLogs', function(req,res){
 // CAN"T FOLLOW RESTFUL routing due to having to pass 
 // user in for the first route --> '/'.
 
+ // var foreCastHours = [1,4,7,10,13,16,19,22];
+
+function closestHour(logHour){
+ 
+ if(logHour <= 1 || logHour <= 2){
+  return 1;
+ }else if(logHour <= 4 || logHour <= 5){
+  return 4;
+ }else if(logHour <= 7 || logHour <= 8){
+  return 7;
+ }else if(logHour <= 10 || logHour <= 11){
+  return 10;
+ }else if(logHour <= 13 || logHour <= 14){
+  return 13;
+ }else if(logHour <= 16 || logHour <= 17){
+  return 16;
+ }else if(logHour <= 19 || logHour <= 20){
+  return 19;
+ }else{
+  return 22;
+ }
+}
+
+
+
 //CREATE LOG
 router.post("/", function (req,res){
   console.log("REQ.BODY",req.body);
@@ -90,20 +115,38 @@ router.post("/", function (req,res){
     console.log("D before crash", d);
     var hour = time.toString().split(" ")[4].split(":")[0];
     console.log("D",d);
-    // var hour = d.split(" ")[4][1];
-
-    // console.log("HOUR",hour);
-
-
     log.user = req.body.user;
-    // log.hour = hour;
     log.numDate = date;
     log.numMonth = month;
     log.hour = hour
     log.spot_name = spotName(req.body.spot_id);
     console.log("REQ.BODY!",req.body);
     console.log("THE LOG",log); 
-    log.save();
+
+
+   /* ----- FIND FORECAST FOR THIS DB ---------------*/ 
+
+    // Find forecast based on closest hour, date and spot
+    db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)}, function(err,forecast){
+      console.log("INSIDE FORECAST FIND FOR LOG...", forecast);
+      if(err){
+        console.log("Error with forecast find:",err);
+      }else{
+        log.forecast = forecast._id;
+        log.save();
+      }
+    });
+
+
+    /* This may need to be wrapped in a callback  or a .then....
+
+
+    /* -------------------------------------------------------------*/
+
+
+
+
+
     if(err){
       console.log(err);
       res.status(404).send("ERROR!");
