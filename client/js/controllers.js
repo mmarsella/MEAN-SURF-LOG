@@ -5,6 +5,8 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.logs = logs;
   $scope.addFormVisible = false;
 
+
+
     $scope.showModal = false;
     // $scope.toggleModal = function(){
     //   console.log("TOGGLE");
@@ -230,6 +232,7 @@ $scope.calendarVisible = true;
     $scope.uiConfig = {
       calendar:{
         height: 450,
+        
         editable: true,
         header:{
           left: 'title',

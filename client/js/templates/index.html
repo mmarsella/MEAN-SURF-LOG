@@ -4,21 +4,20 @@
 
 
 
-
-<h2>Current User is {{currentUser}}</h2>
-
-
- 
-    
-  <modal title="showPage" visible="showModal"></modal>
-  
-
 <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-
-
+  
 <h4>{{alertMessage}}</h4>
 </div>
 
+<h2>Current User is {{currentUser}}</h2>
+
+    
+<modal title="showPage" visible="showModal"></modal>
+  
+
+
+
+<!-- 
 <div class="btn-toolbar">
   
   <div class="btn-group">
@@ -26,10 +25,24 @@
       <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar3')">AgendaWeek</button>
       <button class="btn btn-success" ng-click="changeView('month', 'myCalendar3')">Month</button>
   </div>
+</div> -->
+
+<div class="container">
+  <div class="col-xs-10">
+    
+    <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
+    
+  </div>
+  <div class="col-xs-2">
+  </div>
+    
+
+  
+
+  
 </div>
 
 
-<div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
 
 
 
@@ -72,13 +85,13 @@
 {{forecast.data}}
 
 
-<h3>Logs</h3>
-
-{{logs}}
 
 
+<br>
+<br>
+<br>
 
-<a href="/logout">Logout</a>
+<a href="/logout" class="btn btn-danger">Logout</a>
 
 
      
