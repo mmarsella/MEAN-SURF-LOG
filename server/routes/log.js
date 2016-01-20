@@ -111,6 +111,8 @@ router.post("/", function (req,res){
     var time = new Date(req.body.time);
     var d = new Date(req.body.date);
     var month = d.getMonth();
+
+    var minutes = time.toString().split(" ")[4].split(":")[1];
     console.log("MONTH", month);
     
     var date = d.getDate();
@@ -121,6 +123,7 @@ router.post("/", function (req,res){
     log.numDate = date;
     log.numMonth = month;
     log.hour = hour
+    log.minutes = minutes;
     log.spot_name = spotName(req.body.spot_id);
     console.log("REQ.BODY!",req.body);
     console.log("THE LOG",log); 

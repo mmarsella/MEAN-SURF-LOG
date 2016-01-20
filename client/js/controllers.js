@@ -75,14 +75,22 @@ console.log("Year: ", 2016);
 
 
     for(var i=0; i<$scope.logs.length; i++){
+
       var obj = {};
       obj.title = $scope.logs[i].spot_name;
       obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour),
-      obj.color = "blue"
+      
+        obj.color = "blue";
+      
 
       $scope.events.push(obj);
 
     }
+
+
+    // GRAB user minutes from the log model
+
+    // parse this field when creatinng time
 
 
 
