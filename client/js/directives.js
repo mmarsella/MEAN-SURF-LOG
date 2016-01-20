@@ -30,3 +30,29 @@ app.directive('modal', function () {
       }
     };
   });
+
+app.directive('addLogForm',function(){
+  return{
+    templateUrl:'templates/addLogForm.html',
+    // restrict: 'E',
+    // replace: true,
+  
+    controller: function($scope,LogService,$auth){
+    $scope.currentUser = $auth.getPayload().user;
+    $scope.logs = LogService.getLogs($scope.currentUser);
+    $scope.addLog = function(log){
+
+      log.user = $scope.currentUser._id;
+      console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
+      console.log("INSIDE ADD LOG", log);
+      LogService.createLog(log).then(function(log){
+        console.log("SUCCESS");
+        $scope.logs.push(log);  // updates the logs on page w/o refresh!
+         addCalendarEvent(log);
+        $scope.log = {};
+      });
+    }
+  },  // end Controller
+ }
+}); //end logForm
+

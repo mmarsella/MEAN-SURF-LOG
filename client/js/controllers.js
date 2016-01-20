@@ -3,6 +3,7 @@
 app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCalendarConfig, ForecastService, LogService,logs){
   $scope.log = {};
   $scope.logs = logs;
+  $scope.addFormVisible = false;
 
     $scope.showModal = false;
     // $scope.toggleModal = function(){
@@ -10,6 +11,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
     //   $scope.showModal = !$scope.showModal;
     // };
 
+  $scope.showAddForm = function(){
+    $scope.addFormVisible = !$scope.addFormVisible;
+  }
 
   console.log("HEREE'S THE USER", logs);
 
@@ -163,15 +167,9 @@ $scope.calendarVisible = true;
           }
         }
 
-
-
-
         // $scope.calendarVisible = !$scope.calendarVisible;
         $scope.showModal = !$scope.showModal;
         $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
-
-
-
 
 
     };

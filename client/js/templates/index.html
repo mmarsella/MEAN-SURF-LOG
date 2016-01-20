@@ -60,60 +60,9 @@
 </div>
 
 
+<button ng-click="showAddForm()" ng-hide="addFormVisible" class="btn btn-primary">ADD LOG</button>
 
-
-<h4>CREATE LOG</h4>
-
-      <form name="postForm" class="text-center" ng-submit="addLog(newLog)" ng-hide="" novalidate>
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Date</span>
-          <input type="date" class="form-control" placeholder="The date!" aria-describedby="basic-addon1"name="log[date]" id="date" ng-model="newLog.date" required>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Time</span>
-          <input type="time" class="form-control" placeholder="When did you get in.." aria-describedby="basic-addon1"name="log[time]" id="time" ng-model="newLog.time" required>
-        </div>
-          <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Duration</span>
-          <input type="number" class="form-control" placeholder="In minutes..." aria-describedby="basic-addon1"name="log[duration]" id="duration" ng-model="log.duration" required>
-        </div>
-           <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Rating</span>
-          <input type="number" class="form-control" placeholder="1-10" aria-describedby="basic-addon1"name="log[rating]" id="rating" ng-model="newLog.rating" required>
-        </div>
-          <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Description</span>
-          <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="newLog.description" required>
-        </div>
-             <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Location</span>
-          <select class="form-control" name="log[location]" ng-model="newLog.spot_id">
-              <option value="4221">Bolinas</option>
-              <option value="4215">Bolinas Jetty</option>
-              <option value="302">Eureka</option>
-              <option value="299">Klamath River</option>
-              <option value="819">Linda Mar/Pacifica</option>
-              <option value="307">Marin County</option>
-              <option value="301">Moonstone Beach</option>
-              <option value="255">Ocean Beach</option>
-              <option value="300">Patricks Point</option>
-              <option value="304">Point Arena</option>
-              <option value="306">Salmon Creek</option>
-              <option value="305">Secrets</option>
-              <option value="4083">Shelter Cove</option>
-              <option value="298">South Beach</option>
-              <option value="4216">Stinson Beach</option>
-              <option value="303">Virgin Creek</option>
-          </select>
-         <!--  <input type="text" class="form-control" placeholder="What spot.." aria-describedby="basic-addon1"name="log[location]" id="location" required> -->
-        </div>
-        <br>
-         <input type="submit" class="btn btn-success" ng-disabled="postForm.$invalid">
-      <!--   <button class="btn-lg btn-success">POST</button> -->
-      </form>
-
-
-
+<add-log-form ng-show="addFormVisible"></add-log-form>
 
 
 <h4>THE FORECAST</h4>
