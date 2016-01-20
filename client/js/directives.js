@@ -38,8 +38,27 @@ app.directive('addLogForm',function(){
     // replace: true,
   
     controller: function($scope,LogService,$auth){
-    $scope.currentUser = $auth.getPayload().user;
-    $scope.logs = LogService.getLogs($scope.currentUser);
+    console.log("User", $scope.currentUser);
+
+       var date = new Date();
+    var d = date.getDate();
+    console.log("D", d);
+    var m = date.getMonth();
+    console.log("m",m);
+    var y = date.getFullYear();    // Use the current year when adding log
+    console.log("y",y);
+
+            function addCalendarEvent(log){
+            var obj = {};
+            obj.title = log.spot_name;
+            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
+            
+              obj.color = "blue";
+            $scope.events.push(obj);
+
+        }
+
+    console.log("logs in directive", $scope.logs);
     $scope.addLog = function(log){
 
       log.user = $scope.currentUser._id;
@@ -50,6 +69,7 @@ app.directive('addLogForm',function(){
         $scope.logs.push(log);  // updates the logs on page w/o refresh!
          addCalendarEvent(log);
         $scope.log = {};
+        $scope.addFormVisible = !$scope.addFormVisible;
       });
     }
   },  // end Controller

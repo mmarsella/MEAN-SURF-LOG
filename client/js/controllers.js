@@ -101,15 +101,15 @@ $scope.calendarVisible = true;
         }      
     
 
-        function addCalendarEvent(log){
-            var obj = {};
-            obj.title = log.spot_name;
-            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
+        // function addCalendarEvent(log){
+        //     var obj = {};
+        //     obj.title = log.spot_name;
+        //     obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
             
-              obj.color = "blue";
-            $scope.events.push(obj);
+        //       obj.color = "blue";
+        //     $scope.events.push(obj);
 
-        }
+        // }
 
 
 
