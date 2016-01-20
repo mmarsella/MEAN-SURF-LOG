@@ -36,13 +36,13 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 --------------------------------------------*/
 
 
-console.log("First Log",$scope.logs[0])
+// console.log("First Log",$scope.logs[0])
 
-console.log("Location: ", $scope.logs[0].spot_name);
-console.log("numDate: ", $scope.logs[0].numDate);
-console.log("numMonth: ", $scope.logs[0].numMonth);
-console.log("Hour: ", $scope.logs[0].hour);
-console.log("Year: ", 2016);
+// console.log("Location: ", $scope.logs[0].spot_name);
+// console.log("numDate: ", $scope.logs[0].numDate);
+// console.log("numMonth: ", $scope.logs[0].numMonth);
+// console.log("Hour: ", $scope.logs[0].hour);
+// console.log("Year: ", 2016);
 
     var date = new Date();
     var d = date.getDate();
@@ -64,7 +64,7 @@ console.log("Year: ", 2016);
 
     /* event source that contains custom events on the scope */
     $scope.events = [
-      {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate), color:"red"},
+      // {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate), color:"red"},
       // {title: 'All Day Event',start: new Date(y, m, 1)},
       // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
       // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
@@ -73,18 +73,15 @@ console.log("Year: ", 2016);
       // {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
     ];
 
-
-    for(var i=0; i<$scope.logs.length; i++){
-
-      var obj = {};
-      obj.title = $scope.logs[i].spot_name;
-      obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour),
-      
-        obj.color = "blue";
-      
-
-      $scope.events.push(obj);
-
+    if($scope.logs){
+      for(var i=0; i<$scope.logs.length; i++){
+        var obj = {};
+        obj.title = $scope.logs[i].spot_name;
+        obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
+        
+          obj.color = "blue";
+        $scope.events.push(obj);
+      }
     }
 
 
