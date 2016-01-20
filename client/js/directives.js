@@ -45,7 +45,9 @@ app.directive('addLogForm',function(){
     
 
         function addCalendarEvent(log){
+            console.log("INSIDE addCal for dir",log)
             var obj = {};
+            obj._id = log._id;
             obj.title = log.spot_name;
             obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),    
             obj.color = "red";
