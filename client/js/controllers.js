@@ -4,6 +4,12 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
 
+    $scope.showModal = false;
+    // $scope.toggleModal = function(){
+    //   console.log("TOGGLE");
+    //   $scope.showModal = !$scope.showModal;
+    // };
+
 
   console.log("HEREE'S THE USER", logs);
 
@@ -35,6 +41,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 /*___________________________________________
 ************** FULL CALENDAR ****************
 --------------------------------------------*/
+
+
+$scope.calendarVisible = true;
 
 
 // console.log("First Log",$scope.logs[0])
@@ -129,7 +138,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 
 
     /* alert on eventClick */
-    $scope.alertOnEventClick = function( date, jsEvent, view){
+    $scope.onEventClick = function( date, jsEvent, view){
+        // $scope.calendarVisible = !$scope.calendarVisible;
+        $scope.showModal = !$scope.showModal;
         $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
     };
     /* alert on Drop */
@@ -195,7 +206,7 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
           center: '',
           right: 'today prev,next'
         },
-        eventClick: $scope.alertOnEventClick,
+        eventClick: $scope.onEventClick,
         eventDrop: $scope.alertOnDrop,
         eventResize: $scope.alertOnResize,
         eventRender: $scope.eventRender
