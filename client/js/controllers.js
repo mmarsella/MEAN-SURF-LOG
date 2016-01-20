@@ -4,7 +4,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
   $scope.addFormVisible = false;
-
+  
+  
+  $scope.isCollapsed = false;
 
 
     $scope.showModal = false;

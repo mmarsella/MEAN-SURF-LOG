@@ -64,7 +64,8 @@ app.directive('addLogForm',function(){
         console.log("SUCCESS");
         $scope.logs.push(log);  // updates the logs on page w/o refresh!
          addCalendarEvent(log);
-        $scope.log = {};
+        $scope.newLog = {};
+        $scope.postForm.$setPristine(); // clears form
         $scope.addFormVisible = !$scope.addFormVisible;
       });
     }
