@@ -27,6 +27,7 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
     LogService.createLog(log).then(function(log){
       console.log("SUCCESS");
       $scope.logs.push(log);  // updates the logs on page w/o refresh!
+       addCalendarEvent(log);
       $scope.log = {};
     });
   }
@@ -73,16 +74,30 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
       // {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
     ];
 
-    if($scope.logs){
-      for(var i=0; i<$scope.logs.length; i++){
-        var obj = {};
-        obj.title = $scope.logs[i].spot_name;
-        obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
-        
-          obj.color = "blue";
-        $scope.events.push(obj);
-      }
-    }
+    
+        if($scope.logs){
+          for(var i=0; i<$scope.logs.length; i++){
+            var obj = {};
+            obj.title = $scope.logs[i].spot_name;
+            obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
+            
+              obj.color = "blue";
+            $scope.events.push(obj);
+          }
+        }      
+    
+
+        function addCalendarEvent(log){
+            var obj = {};
+            obj.title = log.spot_name;
+            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
+            
+              obj.color = "blue";
+            $scope.events.push(obj);
+
+        }
+
+
 
 
     // GRAB user minutes from the log model
