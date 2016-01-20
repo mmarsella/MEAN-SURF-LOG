@@ -67,6 +67,18 @@ Context:  Including script tags in my index.html like so:
   FOR TUESDAY:  GET CREATE LOG TO LINK TO db.forecast.find.  
 
   --> Everything is in the create log, just need to handle asynchronous behavior.
+
+
+2)  Click event = SHOW PAGE
+3) SHOW PAGE = EDIT/DELETE
+4)  Button to Add Log or Click empty calendar square
+5) Background job for APit forecast
+
+
+
+
+
+
   
 
 
