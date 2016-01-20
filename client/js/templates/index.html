@@ -8,22 +8,9 @@
 <h2>Current User is {{currentUser}}</h2>
 
 
-  <h1>Modal example</h1>
-  <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
+ 
     
-    <modal title="Login form" visible="showModal">
-    <form role="form">
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" />
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </modal>
+  <modal title="showPage" visible="showModal"></modal>
   
 
 <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
@@ -77,14 +64,14 @@
 
 <h4>CREATE LOG</h4>
 
-      <form name="postForm" class="text-center" ng-submit="addLog(log)" novalidate>
+      <form name="postForm" class="text-center" ng-submit="addLog(newLog)" ng-hide="" novalidate>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Date</span>
-          <input type="date" class="form-control" placeholder="The date!" aria-describedby="basic-addon1"name="log[date]" id="date" ng-model="log.date" required>
+          <input type="date" class="form-control" placeholder="The date!" aria-describedby="basic-addon1"name="log[date]" id="date" ng-model="newLog.date" required>
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Time</span>
-          <input type="time" class="form-control" placeholder="When did you get in.." aria-describedby="basic-addon1"name="log[time]" id="time" ng-model="log.time" required>
+          <input type="time" class="form-control" placeholder="When did you get in.." aria-describedby="basic-addon1"name="log[time]" id="time" ng-model="newLog.time" required>
         </div>
           <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Duration</span>
@@ -92,15 +79,15 @@
         </div>
            <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Rating</span>
-          <input type="number" class="form-control" placeholder="1-10" aria-describedby="basic-addon1"name="log[rating]" id="rating" ng-model="log.rating" required>
+          <input type="number" class="form-control" placeholder="1-10" aria-describedby="basic-addon1"name="log[rating]" id="rating" ng-model="newLog.rating" required>
         </div>
           <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Description</span>
-          <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="log.description" required>
+          <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="newLog.description" required>
         </div>
              <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Location</span>
-          <select class="form-control" name="log[location]" ng-model="log.spot_id">
+          <select class="form-control" name="log[location]" ng-model="newLog.spot_id">
               <option value="4221">Bolinas</option>
               <option value="4215">Bolinas Jetty</option>
               <option value="302">Eureka</option>

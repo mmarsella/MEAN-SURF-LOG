@@ -1,0 +1,23 @@
+{
+  "name": "js",
+  "homepage": "https://github.com/mmarsella/MEAN-SURF-LOG",
+  "authors": [
+    "Mark Marsella <mmarsella114@g.rwu.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "~1.4.8",
+    "angular-bootstrap": "~1.0.3",
+    "angular-ui-calendar": "~1.0.1"
+  }
+}

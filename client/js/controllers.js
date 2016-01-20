@@ -87,6 +87,7 @@ $scope.calendarVisible = true;
         if($scope.logs){
           for(var i=0; i<$scope.logs.length; i++){
             var obj = {};
+            obj._id = $scope.logs[i]._id;
             obj.title = $scope.logs[i].spot_name;
             obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
             
@@ -137,11 +138,42 @@ $scope.calendarVisible = true;
 
 
 
+    //onEventClick
+
+    /*
+      Should make a call to get an indiv log....
+
+    */
+
+
+
     /* alert on eventClick */
     $scope.onEventClick = function( date, jsEvent, view){
+      $scope.log = {};
+      // date is the eventObject
+
+        console.log("date",date);
+        console.log("jsEvent",jsEvent);
+        console.log("view",view);
+
+        //Find log from event, set it to $scope.log
+        for(var i=0; i < $scope.logs.length; i++){
+          if($scope.logs[i]._id === date._id){
+            $scope.log = $scope.logs[i];
+          }
+        }
+
+
+
+
         // $scope.calendarVisible = !$scope.calendarVisible;
         $scope.showModal = !$scope.showModal;
         $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
+
+
+
+
+
     };
     /* alert on Drop */
      $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
