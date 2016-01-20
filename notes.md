@@ -1,3 +1,11 @@
+TO DO WED:
+
+1)  When adding a log, have the cal-event be updated as well... so no page refresh to view..
+
+
+
+
+
 1/16/2016
 
             _________

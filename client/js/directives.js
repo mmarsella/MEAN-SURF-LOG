@@ -41,21 +41,15 @@ app.directive('addLogForm',function(){
     console.log("User", $scope.currentUser);
 
        var date = new Date();
-    var d = date.getDate();
-    console.log("D", d);
-    var m = date.getMonth();
-    console.log("m",m);
-    var y = date.getFullYear();    // Use the current year when adding log
-    console.log("y",y);
+       var y = date.getFullYear();    // Use the current year when adding log
+    
 
-            function addCalendarEvent(log){
+        function addCalendarEvent(log){
             var obj = {};
             obj.title = log.spot_name;
-            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
-            
-              obj.color = "blue";
+            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),    
+            obj.color = "red";
             $scope.events.push(obj);
-
         }
 
     console.log("logs in directive", $scope.logs);
