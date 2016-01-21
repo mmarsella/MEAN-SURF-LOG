@@ -132,16 +132,6 @@ $scope.calendarVisible = true;
       }
     };
 
-
-
-
-    // GRAB user minutes from the log model
-
-    // parse this field when creatinng time
-
-
-
-
     /* event source that calls a function on every view switch */
     // $scope.eventsF = function (start, end, timezone, callback) {
     //   var s = new Date(start).getTime() / 1000;

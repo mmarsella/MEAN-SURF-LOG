@@ -66,7 +66,8 @@ app.directive('addLogForm',function(){
          addCalendarEvent(log);
         $scope.newLog = {};
         $scope.postForm.$setPristine(); // clears form
-        $scope.addFormVisible = !$scope.addFormVisible;
+        $scope.isCollapsed = !$scope.isCollapsed;
+        // $scope.addFormVisible = !$scope.addFormVisible;
       });
     }
   },  // end Controller
