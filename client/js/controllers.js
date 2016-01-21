@@ -173,7 +173,7 @@ $scope.calendarVisible = true;
 
         // $scope.calendarVisible = !$scope.calendarVisible;
         $scope.showModal = !$scope.showModal;
-        $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
+        // $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
 
 
     };

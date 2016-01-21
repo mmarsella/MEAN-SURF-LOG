@@ -1,13 +1,53 @@
 <div class="container">
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header page-scroll">
+
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                      
+                      <a class="navbar-brand" ng-href="/">SURF LOG</a>
+
+                        
+
+                      
+                       
+                <ul class="nav navbar-nav">
+      
+        <!-- <li data-toggle="modal" data-target="#aboutModal" id="about">About</li> -->
+          </ul>
+
+              </div>
+
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li> <img ng-src="{{currentUser.picture}}" class="userImage"></li>
+                      <li class="page-scroll">
+                        <a ng-href="/logout" cclass="btn btn-default pull-right loginBtn classBtn logout">| Logout</a>
+                    
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+      </nav>
   
-  <h1>Logged in!</h1>
 
-  <img ng-src="{{currentUser.picture}}"/>
 
-    <button type="button" class="btn btn-success" ng-click="isCollapsed = !isCollapsed">Add Log</button>
+    <button type="button" class="btn btn-success" ng-click="isCollapsed = !isCollapsed" data-animation="am-fade-and-slide-right" data-placement="right" bs-aside="aside">Add Log</button>
     <hr>
+
+
+
     <div uib-collapse="isCollapsed">
-      <add-log-form></add-log-form>
+      <add-log-form class="am right am-slide-right"></add-log-form>
       <!-- <div class="well well-lg">Some content</div> -->
     </div>
 
@@ -82,15 +122,15 @@
   </div>
 
 
-  <button ng-click="showAddForm()" ng-hide="addFormVisible" class="btn btn-primary">ADD LOG</button>
+<!--   <button ng-click="showAddForm()" ng-hide="addFormVisible" class="btn btn-primary">ADD LOG</button> -->
 
 
 
-  <h4>THE FORECAST</h4>
+<!--   <h4>THE FORECAST</h4>
 
   <button ng-click="apiCall()" class="btn btn-success">API</button>
 
-  {{forecast.data}}
+  {{forecast.data}} -->
 
 
 
@@ -99,11 +139,6 @@
   <br>
   <br>
 
-  <a href="/logout" class="btn btn-danger">Logout</a>
-
-
-       
-          <pre class="prettyprint linenums">
 
 </div> 
 
