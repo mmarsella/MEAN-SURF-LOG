@@ -4,15 +4,34 @@
               <div class="modal-header"> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
                 <h3 class="modal-title">{{log.spot_name}}</h3>  
-                <h4>{{log.date | date}} </h4>
+                <h4>{{log.date | date}}</h4>
                 <p>{{log.description}}</p>
-                <p>{{log.forecast}}</p>
+                <span><h4>{{log.forecast.swell.minBreakingHeight}} - {{log.forecast.swell.maxBreakingHeight}} ft</h4> </span>
+                <span>Your rating: {{log.rating}}</span>
+                <div>MSW rating: {{log.forecast.fadedRating + log.forecast.solidRating}}</div>
+                
+
+                
 
                
 
                 <div class="msw-sw msw-sw-1"></div>
+                <div class="msw-ssa msw-ssa-10"></div>
               </div> 
             
+                <div class="modal-footer">
+
+                <!-- Ref these to larger img show-pages OR hover over expands img -->
+
+
+                  <img src="{{log.forecast.charts.swell}}" class="swellImg pull-left"> 
+
+                  <img src="{{log.forecast.charts.period}}" class="chartImg pull-left">
+                  <img src="{{log.forecast.charts.wind}}" class="chartImg pull-left">
+                  <img src="{{log.forecast.charts.pressure}}" class="chartImg pull-left">
+                  
+                  <button ng-click="deleteLog(log)" class="btn btn-sm btn-danger pull-right">Delete Log</button>
+                </div>
             </div> 
     </div>  
 </div>
