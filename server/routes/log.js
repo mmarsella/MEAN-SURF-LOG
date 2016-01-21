@@ -165,7 +165,7 @@ router.delete("/:id", function (req,res){
     }else{
       console.log("REMOVED LOG!");
       log.remove();
-      res.send("Success!");
+      res.send(log);
     }
   });
 

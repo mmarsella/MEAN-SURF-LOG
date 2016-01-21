@@ -47,7 +47,9 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   // }
 
   $scope.removeLog = function(log){
-    LogService.removeLog(log);
+    LogService.removeLog(log).then(function(log){
+      $scope.removeEvent(log);  // remove from calendar
+    })
   }
 
 /*___________________________________________
@@ -118,6 +120,17 @@ $scope.calendarVisible = true;
         //     $scope.events.push(obj);
 
         // }
+
+
+          /* remove event */
+    $scope.removeEvent = function(event) {
+      console.log("Inside removeEvent")
+      for(var i=0; i < $scope.events.length; i++){
+        if(event._id === $scope.events[i]._id){
+          $scope.events.splice(i,1);
+        }
+      }
+    };
 
 
 
@@ -203,18 +216,24 @@ $scope.calendarVisible = true;
       }
     };
     /* add custom event*/
-    $scope.addEvent = function() {
-      $scope.events.push({
-        title: 'Open Sesame',
-        start: new Date(y, m, 28),
-        end: new Date(y, m, 29),
-        className: ['openSesame']
-      });
-    };
-    /* remove event */
-    $scope.remove = function(index) {
-      $scope.events.splice(index,1);
-    };
+    // $scope.addEvent = function() {
+    //   $scope.events.push({
+    //     title: 'Open Sesame',
+    //     start: new Date(y, m, 28),
+    //     end: new Date(y, m, 29),
+    //     className: ['openSesame']
+    //   });
+    // };
+
+
+
+
+
+
+
+
+
+  
     /* Change View */
     $scope.changeView = function(view,calendar) {
       uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
