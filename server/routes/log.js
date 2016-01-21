@@ -153,11 +153,24 @@ router.post("/", function (req,res){
 });
 
 
-    /* This may need to be wrapped in a callback  or a .then....
-
-
-    /* -------------------------------------------------------------*/
-
 //Delete a log
+
+router.delete("/:id", function (req,res){
+  console.log("INSIDE DELETE!!!");
+  console.log("REQ.SESSION ID", req.session);
+  db.Log.findById(req.params.id, function (err,log){
+    if(err){
+      console.log(err);
+      // res.redirect("/users/" + req.session.id);
+    }else{
+      console.log("REMOVED LOG!");
+      log.remove();
+      res.send("Success!");
+    }
+  });
+
+
+
+});
 
 module.exports = router;

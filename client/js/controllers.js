@@ -32,18 +32,22 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   // $auth.getPayload() --> Returns a JWT Claims Set, i.e. the middle part of a JSON Web Token.
   $scope.currentUser = $auth.getPayload().user;
 
-  $scope.addLog = function(log){
+  // $scope.addLog = function(log){
 
-    log.user = $scope.currentUser._id;
+  //   log.user = $scope.currentUser._id;
 
-    console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
-    console.log("INSIDE ADD LOG", log);
-    LogService.createLog(log).then(function(log){
-      console.log("SUCCESS");
-      $scope.logs.push(log);  // updates the logs on page w/o refresh!
-       addCalendarEvent(log);
-      $scope.log = {};
-    });
+  //   console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
+  //   console.log("INSIDE ADD LOG", log);
+  //   LogService.createLog(log).then(function(log){
+  //     console.log("SUCCESS");
+  //     $scope.logs.push(log);  // updates the logs on page w/o refresh!
+  //      addCalendarEvent(log);
+  //     $scope.log = {};
+  //   });
+  // }
+
+  $scope.removeLog = function(log){
+    LogService.removeLog(log);
   }
 
 /*___________________________________________

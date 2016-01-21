@@ -59,6 +59,12 @@ app.service("LogService", function($http,$auth){
         console.log("RESP DATA:",resp.data);
         return resp.data;
       });
+    },
+    removeLog: function(log){
+      console.log("Delete service")
+      return $http.delete("/api/log/"+ log._id).then(function(resp){
+        return resp.data;
+      })
     }
   }
 });
