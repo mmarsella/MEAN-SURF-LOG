@@ -19,7 +19,6 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
     $scope.addFormVisible = !$scope.addFormVisible;
   }
 
-  console.log("HEREE'S THE USER", logs);
 
   $scope.apiCall = function(){
     // An $http service returns a promise. --> then handles the data inside the promise the data in the callback is what has been resolved and returned from the API
@@ -56,12 +55,10 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 ************** FULL CALENDAR ****************
 --------------------------------------------*/
 
-
 $scope.calendarVisible = true;
 
 
 // console.log("First Log",$scope.logs[0])
-
 // console.log("Location: ", $scope.logs[0].spot_name);
 // console.log("numDate: ", $scope.logs[0].numDate);
 // console.log("numMonth: ", $scope.logs[0].numMonth);
@@ -78,11 +75,11 @@ $scope.calendarVisible = true;
 
 
     /* event source that pulls from google.com */
-    $scope.eventSources = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
-    };
+    // $scope.eventSources = {
+    //         url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+    //         className: 'gcal-event',           // an option!
+    //         currentTimezone: 'America/Chicago' // an option!
+    // };
 
 
 
@@ -105,7 +102,7 @@ $scope.calendarVisible = true;
             obj.title = $scope.logs[i].spot_name;
             obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
             
-              obj.color = "blue";
+            obj.color = "blue";
             $scope.events.push(obj);
           }
         }      
@@ -123,8 +120,7 @@ $scope.calendarVisible = true;
 
 
           /* remove event */
-    $scope.removeEvent = function(event) {
-      console.log("Inside removeEvent")
+    $scope.removeEvent = function(event){
       for(var i=0; i < $scope.events.length; i++){
         if(event._id === $scope.events[i]._id){
           $scope.events.splice(i,1);

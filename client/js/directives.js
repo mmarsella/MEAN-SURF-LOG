@@ -38,14 +38,14 @@ app.directive('addLogForm',function(){
     // replace: true,
   
     controller: function($scope,LogService,$auth){
-    console.log("User", $scope.currentUser);
+    // console.log("User", $scope.currentUser);
 
        var date = new Date();
        var y = date.getFullYear();    // Use the current year when adding log
     
 
         function addCalendarEvent(log){
-            console.log("INSIDE addCal for dir",log)
+            // console.log("INSIDE addCal for dir",log)
             var obj = {};
             obj._id = log._id;
             obj.title = log.spot_name;
@@ -58,10 +58,10 @@ app.directive('addLogForm',function(){
     $scope.addLog = function(log){
 
       log.user = $scope.currentUser._id;
-      console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
-      console.log("INSIDE ADD LOG", log);
+      // console.log("USER INSIDE ADD LOG", $scope.currentUser._id);
+      // console.log("INSIDE ADD LOG", log);
       LogService.createLog(log).then(function(log){
-        console.log("SUCCESS");
+        // console.log("SUCCESS");
         $scope.logs.push(log);  // updates the logs on page w/o refresh!
          addCalendarEvent(log);
         $scope.newLog = {};
