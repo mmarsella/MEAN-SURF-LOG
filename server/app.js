@@ -8,11 +8,11 @@ var express = require("express"),
     routes = require('./routes');
     auth = require("./middleware/auth");
 
-// var router = express.Router();
-// var request = require("request");
-// var db = require('../models/');
-// var jwt = require('jsonwebtoken');
-// var moment = require('moment');
+
+var request = require("request");
+var db = require('./models/');
+var jwt = require('jsonwebtoken');
+var moment = require('moment');
 
     var spots = {4221:"Bolinas",
              4215:"Bolinas Jetty", 
@@ -39,40 +39,40 @@ function spotName(spot_id){
 }
 
 var CronJob = require('cron').CronJob;
-new CronJob('0 */2 * * * *', function() {  
+new CronJob('0 */1 * * * *', function() {  
 var d = new Date(); 
 console.log("The time is...",d); 
   // iter. thru all spots and create a forecast
-  // for(var i=0; i < spot_ids.length; i++){
-  //   // close function (j) so I can immediately invoke it afterwards with i. Great example of scope and closure.
-  //   (function(j){
-  //     request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=" + spot_ids[j], function(err,resp,body){
-  //         var response = JSON.parse(body);
-  //         console.log("Doing forecast... ");
-  //         response.forEach(function(el){
-  //           console.log("EL", el);
-  //           var forecast = new db.Forecast(el);
-  //           var d = new Date(el.timestamp * 1000);
-  //           console.log("D",d);
-  //           forecast.year = d.getYear();
-  //           forecast.hour = d.getHours();
-  //           forecast.numDate = d.getDate();
-  //           forecast.numMonth = d.getMonth();
-  //           forecast.spot_id = spot_ids[j];
-  //           forecast.spot_name = spotName(spot_ids[j]);
-  //           forecast.date = new Date(el.timestamp * 1000);
-  //           forecast.save(function(err){
-  //             if(err){
-  //               console.log("ERROR IN SAVING!",err);
-  //             }else{
-  //               console.log("Succesfully SAVED");
-  //             }
-  //           });
-  //           console.log("SAVED");
-  //         });
-  //       })  // END API REQUEST
-  //      })(i);  // end j
-  //     }  // end For-loop    
+  for(var i=0; i < spot_ids.length; i++){
+    // close function (j) so I can immediately invoke it afterwards with i. Great example of scope and closure.
+    (function(j){
+      request.get("http://magicseaweed.com/api/"+process.env.MSW_KEY+"/forecast/?spot_id=" + spot_ids[j], function(err,resp,body){
+          var response = JSON.parse(body);
+          console.log("Doing forecast... ");
+          response.forEach(function(el){
+            console.log("EL", el);
+            var forecast = new db.Forecast(el);
+            var d = new Date(el.timestamp * 1000);
+            console.log("D",d);
+            forecast.year = d.getYear();
+            forecast.hour = d.getHours();
+            forecast.numDate = d.getDate();
+            forecast.numMonth = d.getMonth();
+            forecast.spot_id = spot_ids[j];
+            forecast.spot_name = spotName(spot_ids[j]);
+            forecast.date = new Date(el.timestamp * 1000);
+            forecast.save(function(err){
+              if(err){
+                console.log("ERROR IN SAVING!",err);
+              }else{
+                console.log("Succesfully SAVED");
+              }
+            });
+            console.log("SAVED");
+          });
+        })  // END API REQUEST
+       })(i);  // end j
+      }  // end For-loop    
 }, null, true, 'America/Los_Angeles');   //end cron-job
 
 
