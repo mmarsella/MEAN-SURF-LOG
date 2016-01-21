@@ -1,105 +1,109 @@
-<h1>Logged in!</h1>
-
-<img ng-src="{{currentUser.picture}}"/>
-
-  <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
-  <hr>
-  <div uib-collapse="isCollapsed">
-    <div class="well well-lg">Some content</div>
-  </div>
-
-
-
-<div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-  
-<h4>{{alertMessage}}</h4>
-</div>
-
-<h2>Current User is {{currentUser}}</h2>
-
-    
-<modal title="showPage" visible="showModal"></modal>
-  
-
-
-
-<!-- 
-<div class="btn-toolbar">
-  
-  <div class="btn-group">
-      <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar3')">AgendaDay</button>
-      <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar3')">AgendaWeek</button>
-      <button class="btn btn-success" ng-click="changeView('month', 'myCalendar3')">Month</button>
-  </div>
-</div> -->
-
 <div class="container">
-  <div class="col-xs-10">
+  
+  <h1>Logged in!</h1>
+
+  <img ng-src="{{currentUser.picture}}"/>
+
+    <button type="button" class="btn btn-success" ng-click="isCollapsed = !isCollapsed">Add Log</button>
+    <hr>
+    <div uib-collapse="isCollapsed">
+      <add-log-form></add-log-form>
+      <!-- <div class="well well-lg">Some content</div> -->
+    </div>
+
+
+
+  <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
     
-    <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
+  <h4>{{alertMessage}}</h4>
+  </div>
+
+  <!-- <h2>Current User is {{currentUser}}</h2> -->
+
+      
+  <modal title="showPage" visible="showModal"></modal>
+    
+
+
+
+  <!-- 
+  <div class="btn-toolbar">
+    
+    <div class="btn-group">
+        <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar3')">AgendaDay</button>
+        <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar3')">AgendaWeek</button>
+        <button class="btn btn-success" ng-click="changeView('month', 'myCalendar3')">Month</button>
+    </div>
+  </div> -->
+
+  <div class="container">
+    <div class="col-xs-10">
+      
+      <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
+      
+    </div>
+    <div class="col-xs-2">
+    </div>
+      
+
+    
+
     
   </div>
-  <div class="col-xs-2">
-  </div>
-    
-
-  
-
-  
-</div>
 
 
 
 
 
-<div ng-hide="calendarVisible" class="show-page">
+  <div ng-hide="calendarVisible" class="show-page">
 
-<div class="container">
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+
+  </div>
+    
+    <h1>HERE IS THE SHOW PAGE!!!</h1>
   </div>
 
-</div>
-  
-  <h1>HERE IS THE SHOW PAGE!!!</h1>
-</div>
+
+  <button ng-click="showAddForm()" ng-hide="addFormVisible" class="btn btn-primary">ADD LOG</button>
 
 
-<button ng-click="showAddForm()" ng-hide="addFormVisible" class="btn btn-primary">ADD LOG</button>
 
-<add-log-form ng-show="addFormVisible"></add-log-form>
+  <h4>THE FORECAST</h4>
 
+  <button ng-click="apiCall()" class="btn btn-success">API</button>
 
-<h4>THE FORECAST</h4>
-
-<button ng-click="apiCall()" class="btn btn-success">API</button>
-
-{{forecast.data}}
+  {{forecast.data}}
 
 
 
 
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
 
-<a href="/logout" class="btn btn-danger">Logout</a>
+  <a href="/logout" class="btn btn-danger">Logout</a>
 
 
-     
-        <pre class="prettyprint linenums">
+       
+          <pre class="prettyprint linenums">
+
+</div> 
 

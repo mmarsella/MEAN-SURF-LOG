@@ -6,7 +6,7 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.addFormVisible = false;
   
   
-  $scope.isCollapsed = false;
+  $scope.isCollapsed = true;
 
 
     $scope.showModal = false;
