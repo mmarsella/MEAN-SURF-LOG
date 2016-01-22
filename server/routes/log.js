@@ -68,7 +68,7 @@ router.post('/getLogs', function(req,res){
  // var foreCastHours = [1,4,7,10,13,16,19,22];
 
 function closestHour(logHour){
- 
+ logHour = Number(logHour);
  if(logHour <= 1 || logHour <= 2){
   return 1;
  }else if(logHour <= 4 || logHour <= 5){
@@ -132,7 +132,7 @@ router.post("/", function (req,res){
    /* ----- FIND FORECAST FOR THIS DB ---------------*/ 
 
     // Find forecast based on closest hour, date and spot
-    db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)}, function(err,forecast){
+    db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)-1}, function(err,forecast){
       console.log("INSIDE FORECAST FIND FOR LOG...", forecast[0]);
       if(err || forecast.length <= 0){
         // console.log("Error with forecast find:",err);
