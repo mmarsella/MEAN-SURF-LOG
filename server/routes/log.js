@@ -136,7 +136,7 @@ router.post("/", function (req,res){
       console.log("INSIDE FORECAST FIND FOR LOG...", forecast[0]);
       if(err || forecast.length <= 0){
         // console.log("Error with forecast find:",err);
-        res.status(500).send("ERROR!", err, "Forecase Length", forecast.length);
+        res.status(500).send(["ERROR!", err, "Forecase Length", forecast.length]);
       }else{
         log.forecast = forecast[0];  // will save to the db as a ref.id to the forecast object
         log.save(function(err){
