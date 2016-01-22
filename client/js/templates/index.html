@@ -88,13 +88,40 @@
   
  </div>
 
-  <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" 
-    chart-legend="true" chart-series="series" chart-click="onClick"></canvas> 
+<br>
+<div class="row">
+  <div class="col-xs-4 text-center">
+    <div id="hourBlock">
+      <h3 class="hourLabel">Total HRS</h3>
+        <div class="hourCounter text-center" ng-model="hours">{{hours}}</div>
+    </div>  
+  </div>
 
 
-  <canvas id="pie" class="chart chart-pie"
-  chart-data="data2" chart-labels="labels2">
-</canvas> 
+  <div class="col-xs-4 text-center">
+    <h3>Wave Avg</h3>
+   <div id="lineBlock">
+      <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" 
+        chart-legend="true" chart-click="onClick"></canvas> 
+   </div>
+  </div>
+
+
+  <div class="col-xs-4 text-center">
+      <div id="locationBlock">
+        <h3 class="pieLabel">Locations</h3>
+        <canvas id="pie" class="chart chart-pie"
+        chart-data="pieData" chart-labels="pieLabels">
+      </canvas> 
+      </div>    
+  </div>
+</div>
+
+
+
+
+
+
 
   <canvas id="bar" class="chart chart-bar"
   chart-data="data3" chart-labels="labels3" chart-series="series">

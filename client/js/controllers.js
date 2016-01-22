@@ -7,9 +7,10 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.isCollapsed = true;
   $scope.showModal = false;
 
-  $scope.hourCount = 10;
+  $scope.hours = 0;  // For number display on user page
+  $scope.days = $scope.logs.length; // For doughnut chart of days/month
 
-  /****** CHART JS ********/
+  /************* CHART JS ************************/
 
       var spots = {4221:"Bolinas",
              4215:"Bolinas Jetty", 
@@ -49,88 +50,64 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
              163: "Steamer Lane",
              3742: "Waddell Creek"
               };
-
 var spot_ids = Object.keys(spots);
-
 function spotName(spot_id){
     return spots[spot_id] || "Not a spot!";
 }
 
-
-  //Pie Chart
-  // loop through all of the logs in Calendar
-  // assign locations to the data []
-
+/********** PIE CHART *********************************************/
+  // loop through all of the logs in Calendar, assign locations to the data []
+  
   $scope.locObj = {};
-
   for(var i=0; i < $scope.logs.length; i++){
     if($scope.locObj[$scope.logs[i].spot_id]){
       $scope.locObj[$scope.logs[i].spot_id]++;
     }else{
       $scope.locObj[$scope.logs[i].spot_id] = 1;
     }
+    //accumulate all hours surfed
+    $scope.hours += $scope.logs[i].duration;
   }
 
-
-
-
-  console.log("keys!",Object.keys($scope.locObj));
-  console.log("locObj!!!",$scope.locObj);
-
+  // divide by 60 min and round up!
+  $scope.hours = Math.ceil($scope.hours/60);
+  // console.log("keys!",Object.keys($scope.locObj));
+  // console.log("locObj!!!",$scope.locObj);
   var spotNames = Object.keys($scope.locObj).map(function(el){
     return spotName(el);
   });
-
-  console.log("spot values:", Array.prototype.slice.call($scope.locObj));
-
   var visitValues = [];
   for(var val in $scope.locObj){
     visitValues.push($scope.locObj[val]);
   }
-
-  console.log("vis values:", visitValues);
-
-
-
-
-  console.log("Spot names!",spotNames);
+  $scope.pieLabels = spotNames;
+  $scope.pieData = visitValues;
+/****************************************************************/
 
 
+/************* LINE CHART ************************************/
 
-  $scope.labels2 = spotNames;
-  $scope.data2 = visitValues;
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //Line Chart
+  // 1st array --> average wave height of spots sur
 
   $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  // $scope.series = ['Series A', 'Series B'];
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
+    [65, 59, 80, 81, 56, 55, 40,5]
+    
   ];
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
 
   // Simulate async data update
-  $timeout(function () {
-    $scope.data = [
-      [28, 48, 40, 19, 86, 27, 90],
-      [65, 59, 80, 81, 56, 55, 40]
-    ];
-  }, 3000);
+  // $timeout(function () {
+  //   $scope.data = [
+  //     [28, 48, 40, 19, 86, 27, 90],
+  //     [65, 59, 80, 81, 56, 55, 40]
+  //   ];
+  // }, 3000);
+
+
+  /**************************************************************/
 
 
   /**** locObj doesn't update on adding/removing an event ***/

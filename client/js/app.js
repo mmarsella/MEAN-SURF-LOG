@@ -8,18 +8,11 @@ app.config(function($routeProvider, $locationProvider, $authProvider, ChartJsPro
       colours: ['#FF5252', '#FF8A80'],
       responsive: false
     });
-    
+
     // Configure all line charts
     ChartJsProvider.setOptions('Line', {
       datasetFill: false
     });
-
-
-
-
-
-
-
 
   $routeProvider
   .when('/home', {
