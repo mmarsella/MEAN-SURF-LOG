@@ -68,6 +68,7 @@ app.directive('addLogForm',function(){
         $scope.newLog = {};
         $scope.postForm.$setPristine(); // clears form
         $scope.isCollapsed = !$scope.isCollapsed;
+        console.log("locOBJ after add", $scope.locObj)
         // $scope.addFormVisible = !$scope.addFormVisible;
       });
     }

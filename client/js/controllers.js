@@ -11,6 +11,106 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 
   /****** CHART JS ********/
 
+      var spots = {4221:"Bolinas",
+             4215:"Bolinas Jetty", 
+             302: "Eureka",
+             299: "Klamath River",
+             819: "Linda Mar/Pacifica",
+             307: "Marin County",
+             301: "Moonstone Beach",
+             255: "Ocean Beach",
+             300: "Patrick's Point",
+             304: "Point Arena",
+             306: "Salmon Creek",
+             305: "Secrets",
+             4083: "Shelter Cove",
+             298: "South Beach",
+             4216: "Stinson Beach",
+             303: "Virgin Creek",
+             //CEN-CAL SPOTS
+             260: "Andrew Molera State Park",
+             261: "Cambria",
+             666: "Carmel Beach",
+             866: "Cayucos",
+             256: "Davenport Landing",
+             257: "Four Mile",
+             825: "Ghost Trees",
+             258: "Manresa Beach",
+             162: "Mavericks (Half Moon Bay)",
+             3734:"Monterey Bay Offshore",
+             262: "Morro Bay",
+             259: "Moss Landing",
+             264: "Oceano/Pismo",
+             4423:"Pico Creek",
+             644: "Pleasure Point",
+             3679: "Princeton Jetty",
+             263: "Saint Annes",
+             4422: "Sand Dollar Beach",
+             163: "Steamer Lane",
+             3742: "Waddell Creek"
+              };
+
+var spot_ids = Object.keys(spots);
+
+function spotName(spot_id){
+    return spots[spot_id] || "Not a spot!";
+}
+
+
+  //Pie Chart
+  // loop through all of the logs in Calendar
+  // assign locations to the data []
+
+  $scope.locObj = {};
+
+  for(var i=0; i < $scope.logs.length; i++){
+    if($scope.locObj[$scope.logs[i].spot_id]){
+      $scope.locObj[$scope.logs[i].spot_id]++;
+    }else{
+      $scope.locObj[$scope.logs[i].spot_id] = 1;
+    }
+  }
+
+
+
+
+  console.log("keys!",Object.keys($scope.locObj));
+  console.log("locObj!!!",$scope.locObj);
+
+  var spotNames = Object.keys($scope.locObj).map(function(el){
+    return spotName(el);
+  });
+
+  console.log("spot values:", Array.prototype.slice.call($scope.locObj));
+
+  var visitValues = [];
+  for(var val in $scope.locObj){
+    visitValues.push($scope.locObj[val]);
+  }
+
+  console.log("vis values:", visitValues);
+
+
+
+
+  console.log("Spot names!",spotNames);
+
+
+
+  $scope.labels2 = spotNames;
+  $scope.data2 = visitValues;
+
+
+
+
+
+
+
+
+
+
+
+
 
   //Line Chart
 
@@ -33,20 +133,18 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   }, 3000);
 
 
-  //Pie Chart
-  // loop through all of the logs in Calendar
-  // assign locations to the data []
+  /**** locObj doesn't update on adding/removing an event ***/
 
 
-  $scope.labels2 = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-  $scope.data2 = [300, 500, 100];
+
+
+
 
 
   
   // Bar Chart
   $scope.labels3 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   $scope.series = ['Series A', 'Series B'];
-
   $scope.data3 = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90]
@@ -130,15 +228,7 @@ $scope.calendarVisible = true;
 
 
     /* event source that contains custom events on the scope */
-    $scope.events = [
-      // {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate), color:"red"},
-      // {title: 'All Day Event',start: new Date(y, m, 1)},
-      // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
-      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
-      // {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      // {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
+    $scope.events = [];
 
     
         if($scope.logs){
@@ -269,23 +359,6 @@ $scope.calendarVisible = true;
         sources.push(source);
       }
     };
-    /* add custom event*/
-    // $scope.addEvent = function() {
-    //   $scope.events.push({
-    //     title: 'Open Sesame',
-    //     start: new Date(y, m, 28),
-    //     end: new Date(y, m, 29),
-    //     className: ['openSesame']
-    //   });
-    // };
-
-
-
-
-
-
-
-
 
   
     /* Change View */
