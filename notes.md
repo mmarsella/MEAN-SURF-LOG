@@ -1,6 +1,42 @@
-TO DO WED:
 
-1)  When adding a log, have the cal-event be updated as well... so no page refresh to view..
+_____________________________
+| Deployed App Differences:  |
+|
+|  Heroku Scheduler:
+|
+|  Calls forecast API daily, at 5pm.
+|
+|  To see server logs:  heroku logs -t
+| 
+|  To see heroku db:  https://dashboard.heroku.com/apps/the-surf-log/resources
+|
+|  In log.js: function closestHour was changed to closestHour()-1 in Forecast query due to heroku 
+|    hours being 1 hour behind local db hours.
+| 
+|
+|
+|
+|______________________________________________________________________________________________________
+
+
+To DO
+
+--> Add Southern Cali Spot Ids
+--> Modify Add Form to be drop down depending on region
+--> Show Page: Edit (Click on material and it becomes a form);
+--> Chart.js
+--> Link chart imgs to hover-over to blow up or bigger imgs
+
+STYLE!!!!!
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,15 +198,18 @@ Carmel Beach --> 666
 Cayucos --> 866
 Davenport Landing --> 256
 Four Mile --> 257
+
 Ghost Trees --> 825
 Manresa Beach --> 258
 Mavericks (Half Moon Bay) --> 162
 Monterey Bay Offshore --> 3734
 Morro Bay --> 262
+
 Moss Landing --> 259
 Oceano/Pismo --> 264
 Pico Creek --> 4423
 Pleasure Point --> 644
+
 Princeton Jetty --> 3679
 Saint Annes --> 263
 Sand Dollar Beach --> 4422

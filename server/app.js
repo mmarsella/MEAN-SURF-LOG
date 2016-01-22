@@ -30,8 +30,30 @@ var moment = require('moment');
              4083: "Shelter Cove",
              298: "South Beach",
              4216: "Stinson Beach",
-             303: "Virgin Creek"
+             303: "Virgin Creek",
+             //CEN-CAL SPOTS
+             260: "Andrew Molera State Park",
+             261: "Cambria",
+             666: "Carmel Beach",
+             866: "Cayucos",
+             256: "Davenport Landing",
+             257: "Four Mile",
+             825: "Ghost Trees",
+             258: "Manresa Beach",
+             162: "Mavericks (Half Moon Bay)",
+             3734:"Monterey Bay Offshore",
+             262: "Morro Bay",
+             259: "Moss Landing",
+             264: "Oceano/Pismo",
+             4423:"Pico Creek",
+             644: "Pleasure Point",
+             3679: "Princeton Jetty",
+             263: "Saint Annes",
+             4422: "Sand Dollar Beach",
+             163: "Steamer Lane",
+             3742: "Waddell Creek"
               };
+
 
 var spot_ids = Object.keys(spots);
 

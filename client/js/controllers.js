@@ -4,6 +4,10 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
   $scope.addFormVisible = false;
+
+
+  //Loop through 
+
   
   
   $scope.isCollapsed = true;
@@ -174,10 +178,24 @@ $scope.calendarVisible = true;
           }
         }
 
+        var rating = [];
+ 
+
         // $scope.calendarVisible = !$scope.calendarVisible;
         $scope.showModal = !$scope.showModal;
         // $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
 
+        // Loop the solid rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.solidRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_filled.png" />');
+        }
+         
+        // Loop the faded rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.fadedRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_empty.png" />');
+        }
+         
+        document.getElementById("ratingContainer").innerHTML = rating.join(" ");
 
     };
     /* alert on Drop */
