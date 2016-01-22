@@ -1,7 +1,25 @@
-var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar',"ngAnimate",'ui.bootstrap']);
+var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar',"ngAnimate",'ui.bootstrap','chart.js']);
 
 // Config takes in providers.  $auth isn't a provider!
-app.config(function($routeProvider, $locationProvider, $authProvider){
+app.config(function($routeProvider, $locationProvider, $authProvider, ChartJsProvider){
+  
+  // Configure all charts
+    ChartJsProvider.setOptions({
+      colours: ['#FF5252', '#FF8A80'],
+      responsive: false
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('Line', {
+      datasetFill: false
+    });
+
+
+
+
+
+
+
+
   $routeProvider
   .when('/home', {
     controller: "MainController",

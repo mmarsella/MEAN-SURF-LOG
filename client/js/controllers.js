@@ -4,20 +4,32 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.log = {};
   $scope.logs = logs;
   $scope.addFormVisible = false;
-
-
-  //Loop through 
-
-  
-  
   $scope.isCollapsed = true;
+  $scope.showModal = false;
 
 
-    $scope.showModal = false;
-    // $scope.toggleModal = function(){
-    //   console.log("TOGGLE");
-    //   $scope.showModal = !$scope.showModal;
-    // };
+  /****** CHART JS ********/
+
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+
+  // Simulate async data update
+  $timeout(function () {
+    $scope.data = [
+      [28, 48, 40, 19, 86, 27, 90],
+      [65, 59, 80, 81, 56, 55, 40]
+    ];
+  }, 3000);
+
+
+
 
   $scope.showAddForm = function(){
     $scope.addFormVisible = !$scope.addFormVisible;
@@ -178,24 +190,30 @@ $scope.calendarVisible = true;
           }
         }
 
-        var rating = [];
- 
-
-        // $scope.calendarVisible = !$scope.calendarVisible;
+        
         $scope.showModal = !$scope.showModal;
-        // $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
 
+
+        console.log("Weather condition",$scope.log.forecast.condition.weather);
+
+
+
+
+
+       
+
+        /*********** MSW STAR RATING SYSTEM!!!! ********************/
+        var rating = [];
         // Loop the solid rating on a single forecast object.
         for (var i = 0; i < $scope.log.forecast.solidRating; i++) {
             rating.push('<img src="http://cdnimages.magicseaweed.com/star_filled.png" />');
         }
-         
         // Loop the faded rating on a single forecast object.
         for (var i = 0; i < $scope.log.forecast.fadedRating; i++) {
             rating.push('<img src="http://cdnimages.magicseaweed.com/star_empty.png" />');
         }
-         
         document.getElementById("ratingContainer").innerHTML = rating.join(" ");
+        /********************************************************************************/
 
     };
     /* alert on Drop */

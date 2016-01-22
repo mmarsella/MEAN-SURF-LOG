@@ -20,7 +20,7 @@ Sat Jan 16 2016 16:00:00 GMT-0800 (PST)
 Thu Jan 21 2016 13:00:00 GMT-0800 (PST)
 -- response length is an array of 40 objects
 
-NEED TO TURN INTO A BACKGROUND JOB!
+
 
 // To associate log w/ forecast
 
