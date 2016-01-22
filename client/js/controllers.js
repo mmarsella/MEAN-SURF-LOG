@@ -7,11 +7,15 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.isCollapsed = true;
   $scope.showModal = false;
 
+  $scope.hourCount = 10;
 
   /****** CHART JS ********/
 
+
+  //Line Chart
+
   $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
+  // $scope.series = ['Series A', 'Series B'];
   $scope.data = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90]
@@ -29,7 +33,27 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   }, 3000);
 
 
+  //Pie Chart
+  // loop through all of the logs in Calendar
+  // assign locations to the data []
 
+
+  $scope.labels2 = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+  $scope.data2 = [300, 500, 100];
+
+
+  
+  // Bar Chart
+  $scope.labels3 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  $scope.series = ['Series A', 'Series B'];
+
+  $scope.data3 = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+
+
+/***********************************************/
 
   $scope.showAddForm = function(){
     $scope.addFormVisible = !$scope.addFormVisible;
@@ -64,6 +88,12 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.removeLog = function(log){
     LogService.removeLog(log).then(function(log){
       $scope.removeEvent(log);  // remove from calendar
+       for(var i=0; i < $scope.logs.length; i++){
+        if(log._id === $scope.logs[i]._id){
+          $scope.logs.splice(i,1);
+          console.log("Logs after removal",$scope.logs);
+        }
+      }
     })
   }
 
@@ -123,6 +153,8 @@ $scope.calendarVisible = true;
           }
         }      
     
+      console.log("LOGS",$scope.logs);
+
 
         // function addCalendarEvent(log){
         //     var obj = {};
