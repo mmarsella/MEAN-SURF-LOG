@@ -1,4 +1,4 @@
-var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar',"ngAnimate",'ui.bootstrap','chart.js']);
+var app = angular.module("surfLog", ['ngRoute','satellizer','ui.calendar',"ngAnimate",'ui.bootstrap','chart.js','angularVideoBg']);
 
 // Config takes in providers.  $auth isn't a provider!
 app.config(function($routeProvider, $locationProvider, $authProvider, ChartJsProvider){

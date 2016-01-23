@@ -7,10 +7,38 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.isCollapsed = true;
   $scope.showModal = false;
 
+
+  
+
+
+    // Array of videos to use as playlist
+    // $scope.videos = [{
+    //     videoId: 'NQZJ0zbouIg',
+    //     mute: false
+    // },{
+    //     videoId: 'CwJ4eBWalFo',
+    //     start: 10,
+    //     end: 50
+    // }];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $scope.hours = 0;  // For number display on user page
   $scope.days = $scope.logs.length; // For doughnut chart of days/month
 
-  /************* CHART JS ************************/
+/************* CHART JS ************************/
 
       var spots = {4221:"Bolinas",
              4215:"Bolinas Jetty", 
@@ -385,6 +413,19 @@ $scope.calendarVisible = true;
 
 
 app.controller("LoginController", function($scope, $auth, $location, UserService){
+  
+
+    $scope.video = {
+    id: 'CwJ4eBWalFo'
+  };
+
+  console.log($scope.video);
+
+
+
+
+
+
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
       .then(function(res) {
