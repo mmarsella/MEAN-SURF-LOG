@@ -14,14 +14,17 @@
                 <h4>{{log.date | date}}</h4>
                 <p>{{log.description}}</p>
                 <span><h4>{{log.forecast.swell.minBreakingHeight}} - {{log.forecast.swell.maxBreakingHeight}} ft</h4> </span>
-                <span>Your rating: {{log.rating}}</span>
-                <div>MSW rating: {{log.forecast.fadedRating + log.forecast.solidRating}}</div>
-
                 <div id="ratingContainer"></div>
+                <span>Your rating: {{log.rating}}</span>
+             <!--    <div>MSW rating: {{log.forecast.fadedRating + log.forecast.solidRating}}</div> -->
+
                 
 
-                <div class="msw-sw msw-sw-1"></div>
-                <div class="msw-ssa msw-ssa-10"></div>
+                <div class="msw-sw msw-sw-{{log.forecast.condition.weather}}"></div>
+
+                {{log.forecast.condition.weather}}
+
+                <!-- <div class="msw-ssa msw-ssa-10"></div> -->
               </div> 
             
                 <div class="modal-footer">
