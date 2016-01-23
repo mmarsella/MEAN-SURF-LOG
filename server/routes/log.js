@@ -157,7 +157,6 @@ router.post("/", function (req,res){
 
 
 //Delete a log
-
 router.delete("/:id", function (req,res){
   console.log("INSIDE DELETE!!!");
   console.log("REQ.SESSION ID", req.session);

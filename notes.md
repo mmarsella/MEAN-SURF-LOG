@@ -1,4 +1,4 @@
-
+Surf_Log
 _____________________________
 | Deployed App Differences:  |
 |
@@ -31,6 +31,8 @@ STYLE!!!!!
 
 
 
+
+Heroku Scheduler call does NOT pick up Central Cali spots.
 
 
 
