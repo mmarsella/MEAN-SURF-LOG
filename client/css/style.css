@@ -35,12 +35,12 @@ header video-bg {
 
 #video{
   width: 100%;
-  height: 1300px;
+  height: 900px;
   position: relative;
 }
 
 .loginForm{
-  margin-top: 30%;
+  margin-top: 5%;
 }
 
 #signuplink:hover{
@@ -54,6 +54,11 @@ header video-bg {
 .calendar{
   /*margin-left: 5%;*/
   /*width: 60%;*/
+}
+
+#ocean{
+  background-image: url("http://worldartsme.com/images/ocean-water-clipart-1.jpg");
+  background-size: cover;
 }
 
 
