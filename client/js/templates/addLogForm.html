@@ -36,8 +36,8 @@
 
 
              <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Location</span>
-          <select class="form-control" name="log[location]" ng-model="newLog.spot_id">
+          <span class="input-group-addon glyphicon glyphicon-globe" id="basic-addon1"></span>
+          <select class="form-control" name="log[location]" id="location" ng-model="newLog.spot_id">
               <option value="4221">Bolinas</option>
               <option value="4215">Bolinas Jetty</option>
               <option value="302">Eureka</option>
@@ -62,6 +62,6 @@
           <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="newLog.description" required>
         </div>
         <br>
-         <input type="submit" class="btn btn-success" ng-disabled="postForm.$invalid">
       <!--   <button class="btn-lg btn-success">POST</button> -->
       </form>
+         <input type="submit" class="btn btn-success" id="submitButton" ng-disabled="postForm.$invalid">

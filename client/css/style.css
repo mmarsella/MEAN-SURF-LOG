@@ -464,24 +464,44 @@ img { max-width: 100%; }
 /*ADD FORM*/
 
 #addForm{
-  margin-top: 5%;;
+  margin-top: 4%;;
   /*border: 3px solid blue;*/
 }
 
-#time{
-  width: 42%;
+#time,#date,#duration,#location{
+  width: 50%;
 }
 
-#date{
-  width: 42%;
+/*#date{
+  width: 45%;
 }
 
 #duration{
-  width: 42%;
+  width: 45%;
 }
 
-.glyphicon-time,.glyphicon-calendar{
-      background-color: #7DD4F9;
+#location{
+  width: 45%;
+}*/
+
+.glyphicon-calendar{
+  background-color: #6AD0FA;
+}
+.glyphicon-time{
+  background-color: #00AAEB;
+}
+.glyphicon-tint{
+  background-color: #067FC0;
+}
+
+
+
+.glyphicon-globe{
+
+}
+
+#submitButton{
+  margin-left: 17%;
 }
 
 .form-control{
