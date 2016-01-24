@@ -1,4 +1,4 @@
-<h1>Hi!</h1>
+<!-- <h1>Hi!</h1>
 
 <button ng-click="authenticate('facebook')">Sign up with Facebook</button>
 
@@ -22,6 +22,57 @@
 
 <br>
 <br>
-<br>
+<br> -->
 
-<a href="http://magicseaweed.com"><img src="http://im-1-uk.msw.ms/msw_powered_by.png"></a>
+<!-- <a href="http://magicseaweed.com"><img src="http://im-1-uk.msw.ms/msw_powered_by.png"></a> -->
+
+
+
+     <div class="container text-center">
+       <div class="loginForm text-center">
+          <h2 style="color:white">Surf Log</h2>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                              <h3>Hey There..</h3>
+                                <p>Sign up here:</p>
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-lock"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
+                          <form role="form" method="POST" class="login-form" ng-submit="signup(user)">
+
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Username</label>
+                                <input type="text" name="form-username" placeholder="Username.." class="form-username form-control" id="form-username" ng-model="user.displayName" id="username">
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Email</label>
+                                <input type="text" name="form-username" placeholder="Email.." class="form-username form-control" id="form-username" ng-model="user.email" id="email">
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" placeholder="Password..." class="form-password form-control" id="form-password" ng-model="user.password" name="password">
+                              </div>
+                              <button type="submit" class="btn">Sign up!</button>
+                              <p>Have an account? <a id="loginLink" ng-click="showSignUp = !showSignUp">Log in!</a>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                          <h3>...or signup with:</h3>
+                          <div class="social-login-buttons">
+
+                              <a class="btn btn-link-2" ng-click="authenticate('facebook')" href="#">
+                              <i class="fa fa-facebook"></i> Facebook
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+      </div>
+  </div>

@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="../css/login.css">
+<!-- <link rel="stylesheet" href="../css/login.css"> -->
 
   <video-bg video-id="video.id" end="23" id="video">
 
+    <sign-up ng-show="showSignUp"></sign-up>
 
-     <div class="container text-center">
+     <div class="container text-center" ng-hide="showSignUp">
        <div class="loginForm text-center">
           <h2 style="color:white">Surf Log</h2>
                     <div class="row">
@@ -28,7 +29,7 @@
                                 <input type="password" placeholder="Password..." class="form-password form-control" id="form-password" ng-model="user.password" name="password">
                               </div>
                               <button type="submit" class="btn">Sign in!</button>
-                              <p>Don't have an account? Sign up! <a id="signuplink" href="/signup">here</a></p>
+                              <p>Don't have an account? Sign up! <a id="signuplink" ng-click="showSignUp = !showSignUp">here</a></p>
                           </form>
                         </div>
                         </div>
@@ -45,8 +46,7 @@
                         </div>
                     </div>
       </div>
-       
-     </div>
+  </div>
         
 
     </video-bg>
