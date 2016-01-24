@@ -1,31 +1,45 @@
-<h1>Hi!</h1>
 
 <!-- <video-bg playlist="videos"></video-bg> -->
 
 <!-- <video-bg video-id="video.id"></video-bg> -->
 
- <video-bg video-id="video.id">
-        <h1>angular-video-bg</h1>
-<button ng-click="authenticate('facebook')">Sign in with Facebook</button>
 
-<h1>Login!</h1>
+     <video-bg video-id="video.id" end="30" id="video">
 
-<div ng-show="errors">
-  {{errors}}
-</div>
-<form method="POST" id="loginform" ng-submit="login(user)">
-  <label for="email">Email: </label>
-  <input type="text" ng-model="user.email" name="email" id="email">
-  <label for="password">Password: </label>
-  <input type="password" ng-model="user.password" name="password" id="password">
-  <input type="submit" value="Log In">
-</form>
 
-Don't have an account? Sign Up <a id="signuplink" href="/signup">here</a>
-<br>
-<br>
-<br>
+     <div class="container text-center">
 
-<a href="http://magicseaweed.com"><img src="http://im-1-uk.msw.ms/msw_powered_by.png"></a>
-      </video-bg>
+
+       <div class="loginForm text-center">
+            <h1>Login!</h1>
+
+            <div ng-show="errors">
+              {{errors}}
+            </div>
+            <form method="POST" id="loginform" ng-submit="login(user)">
+              <label for="email">Email: </label>
+              <input type="text" ng-model="user.email" name="email" id="email">
+              <label for="password">Password: </label>
+              <input type="password" ng-model="user.password" name="password" id="password">
+              <input type="submit" value="Log In">
+            </form>
+
+            Don't have an account? Sign Up <a id="signuplink" href="/signup">here</a>
+            <br>
+            <br>
+            <br>
+
+
+            <button ng-click="authenticate('facebook')">Sign in with Facebook</button>
+      </div>
+       
+     </div>
+        
+
+    </video-bg>
+ 
+
+
+          <a href="http://magicseaweed.com"><img src="http://im-1-uk.msw.ms/msw_powered_by.png"></a>
+
 
