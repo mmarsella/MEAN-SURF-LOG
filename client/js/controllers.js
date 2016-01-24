@@ -6,7 +6,11 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.addFormVisible = false;
   $scope.isCollapsed = true;
   $scope.showModal = false;
+  $scope.days = $scope.logs.length; // For doughnut chart of days/month
 
+
+  console.log("Logs",$scope.logs);
+  console.log("Days", $scope.days);
 
   
 
@@ -36,7 +40,6 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 
 
   $scope.hours = 0;  // For number display on user page
-  $scope.days = $scope.logs.length; // For doughnut chart of days/month
 
 /************* CHART JS ************************/
 
@@ -249,6 +252,7 @@ $scope.calendarVisible = true;
         }      
     
       console.log("LOGS",$scope.logs);
+      console.log("Events", $scope.events);
 
 
         // function addCalendarEvent(log){
@@ -387,8 +391,8 @@ $scope.calendarVisible = true;
     /* config object */
     $scope.uiConfig = {
       calendar:{
-        height: 370,
-        width: 200,
+        height: 380,
+        width: 100,
         
         editable: true,
         header:{

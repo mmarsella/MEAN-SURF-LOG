@@ -52,8 +52,8 @@ header video-bg {
 }
 
 .calendar{
-  /*margin-left: 5%;*/
-  /*width: 60%;*/
+  margin-left: 2%;
+  width: 75%;
 }
 
 #ocean{
@@ -440,13 +440,58 @@ img { max-width: 100%; }
   margin-top: 3%;
 }
 
+#daysBlock{
+  margin-top: 3%;
+}
+
+.dayLabel{
+  margin-top: 3%;
+}
+
+
+
 #line{
   width: 300px;
   height: 200px;
 }
 
 #addLog{
-  background-color: rgb(51, 153, 102);
+  background-color: #007CBE;
+  margin-left: 11%;
+}
+
+
+/*ADD FORM*/
+
+#addForm{
+  margin-top: 5%;;
+  /*border: 3px solid blue;*/
+}
+
+#time{
+  width: 42%;
+}
+
+#date{
+  width: 42%;
+}
+
+#duration{
+  width: 42%;
+}
+
+.glyphicon-time,.glyphicon-calendar{
+      background-color: #7DD4F9;
+}
+
+.form-control{
+  font-size: 13px;
+}
+
+
+
+.stars{
+  margin-left: -58%;
 }
 
 

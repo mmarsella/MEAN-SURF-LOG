@@ -41,6 +41,25 @@ app.directive('addLogForm',function(){
     controller: function($scope,LogService,$auth){
     // console.log("User", $scope.currentUser);
 
+        $scope.rate = 5;
+        $scope.max = 5;
+        $scope.isReadonly = false;
+
+        $scope.hoveringOver = function(value) {
+          $scope.overStar = value;
+          $scope.percent = 100 * (value / $scope.max);
+        };
+
+        // $scope.ratingStates = [
+        //   {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+        //   {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+        //   {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+        //   {stateOn: 'glyphicon-heart'},
+        //   {stateOff: 'glyphicon-off'}
+        // ];
+
+
+
        var date = new Date();
        var y = date.getFullYear();    // Use the current year when adding log
     
