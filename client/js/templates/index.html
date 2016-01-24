@@ -1,8 +1,10 @@
-<link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="../css/index.css">
 
-<div class="container">
+<div class="container-fluid">
 
-      <!-- NAVBAR -->
+
+  <div class="container">
+   <!-- NAVBAR -->
       <nav class="navbar navbar-default navbar-static-top">
           <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,13 +18,8 @@
                   </button>
                       
                       <a class="navbar-brand" ng-href="/">SURF LOG</a>
-
-                        
-
-                      
-                       
                 <ul class="nav navbar-nav">
-      
+                                     
         <!-- <li data-toggle="modal" data-target="#aboutModal" id="about">About</li> -->
           </ul>
 
@@ -42,18 +39,12 @@
           <!-- /.container-fluid -->
       </nav>
       <!-- END NAVBAR -->
+  </div>
 
 
 
-    <button type="button" class="btn btn-success" ng-click="isCollapsed = !isCollapsed" data-animation="am-fade-and-slide-right" data-placement="right" bs-aside="aside">Add Log</button>
-    <br>
 
-
-
-    <div uib-collapse="isCollapsed">
-      <add-log-form class="am right am-slide-right"></add-log-form>
-      <!-- <div class="well well-lg">Some content</div> -->
-    </div>
+   
 
 
 
@@ -80,16 +71,38 @@
     </div>
   </div> -->
 
+
+    <div class="row">
+      <div class="col-xs-9">
+        <div class="span8 calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
+      </div>
+
+      <div class="col-xs-3 text-center">
+       <button type="button" class="btn btn-success text-center" ng-click="isCollapsed = !isCollapsed" data-animation="am-fade-and-slide-right" data-placement="right" bs-aside="aside">Add Log</button>
+      <div uib-collapse="isCollapsed">
+        <add-log-form class="am right am-slide-right"></add-log-form>
+      </div>
+
+    </div>
  
       
-      <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
+    <br>
+
+
+
+      <!-- <div class="well well-lg">Some content</div> -->
+    </div>
+
+   
+
+
       
     
   
 </div>
 
 <br>
-<div class="row">
+<div class="row ocean">
   <div class="col-xs-4 text-center">
     <div id="hourBlock">
       <h3 class="hourLabel">Total HRS</h3>

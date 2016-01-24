@@ -51,6 +51,11 @@ header video-bg {
   cursor: pointer;
 }
 
+.calendar{
+  /*margin-left: 5%;*/
+  /*width: 60%;*/
+}
+
 
 /****** LOGIN FORM *****/
 input[type="text"], 
