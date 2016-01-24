@@ -61,6 +61,10 @@ header video-bg {
   background-size: cover;
 }
 
+#navRight{
+  margin-right: -6%;
+}
+
 
 /****** LOGIN FORM *****/
 input[type="text"], 
@@ -295,9 +299,9 @@ img { max-width: 100%; }
   border-color: #de615e;
 }
 
-.social-login {
+/*.social-login {
   margin-top: 35px;
-}
+}*/
 
 .social-login h3 {
   color: #fff;
@@ -426,16 +430,23 @@ img { max-width: 100%; }
   height: 50px;
   font-size: 35px;
   vertical-align: middle;
-  display: block;
 }
 
 .hourLabel{
-  display: block;
+  margin-top: 1%;
+}
+
+#hourBlock{
+  margin-top: 3%;
 }
 
 #line{
   width: 300px;
   height: 200px;
+}
+
+#addLog{
+  background-color: rgb(51, 153, 102);
 }
 
 

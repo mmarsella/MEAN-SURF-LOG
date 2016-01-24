@@ -387,7 +387,7 @@ $scope.calendarVisible = true;
     /* config object */
     $scope.uiConfig = {
       calendar:{
-        height: 450,
+        height: 370,
         width: 200,
         
         editable: true,

@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="../css/index.css">
 
 <div class="container-fluid">
-
-
   <div class="container-fluid">
    <!-- NAVBAR -->
       <nav class="navbar navbar-default navbar-static-top">
@@ -18,15 +16,11 @@
                   </button>
                       
                       <a class="navbar-brand" ng-href="/">SURF LOG</a>
-                <ul class="nav navbar-nav">
-                                     
-        <!-- <li data-toggle="modal" data-target="#aboutModal" id="about">About</li> -->
-          </ul>
+                <ul class="nav navbar-nav"></ul>
 
               </div>
-
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav navbar-right" id="navRight">
                       <li> <img ng-src="{{currentUser.picture}}" class="userImage"></li>
                       <li class="page-scroll">
                         <a ng-href="/logout" cclass="btn btn-default pull-right loginBtn classBtn logout">| Logout</a>
@@ -41,19 +35,11 @@
       <!-- END NAVBAR -->
   </div>
 
-
-
-
-   
-
-
-
   <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
     
   <h4>{{alertMessage}}</h4>
   </div>
 
-  <!-- <h2>Current User is {{currentUser}}</h2> -->
 
       
   <modal title="showPage" visible="showModal"></modal>
@@ -76,22 +62,13 @@
       <div class="col-xs-9">
         <div class="span8 calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar" ng-show="calendarVisible"></div>
       </div>
-
       <div class="col-xs-3 text-center">
-       <button type="button" class="btn btn-success text-center" ng-click="isCollapsed = !isCollapsed" data-animation="am-fade-and-slide-right" data-placement="right" bs-aside="aside">Add Log</button>
+       <button type="button" class="btn btn-success text-center glyphicon glyphicon-plus-sign" id="addLog" ng-click="isCollapsed = !isCollapsed" data-animation="am-fade-and-slide-right" data-placement="right" bs-aside="aside"> Add Log</button>
       <div uib-collapse="isCollapsed">
         <add-log-form class="am right am-slide-right"></add-log-form>
       </div>
-
     </div>
- 
-      
-    <br>
-
-
-
-      <!-- <div class="well well-lg">Some content</div> -->
-    </div>
+  </div>
 
    
 
@@ -100,15 +77,16 @@
     
   
 </div>
+<!-- END CONTAINER FLUID -->
 
-<br>
+
 <div class="row ocean" id="ocean">
 
 <!-- <img src="http://worldartsme.com/images/ocean-water-clipart-1.jpg"> -->
   <div class="col-xs-4 text-center">
-    <div id="hourBlock">
-      <h3 class="hourLabel">Total HRS</h3>
-        <div class="hourCounter text-center" ng-model="hours">{{hours}}</div>
+    <div id="hourBlock" class="text-center">
+        <span class="hourCounter" ng-model="hours">{{hours}}</span>
+      <h3 class="hourLabel">Hours</h3>
     </div>  
   </div>
 
