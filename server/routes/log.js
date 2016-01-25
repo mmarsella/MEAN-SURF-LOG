@@ -135,7 +135,7 @@ router.post("/", function (req,res){
    // CHANGE TO closestHour(log.hour) -1 for heroku deployment!!!!!
 
     // Find forecast based on closest hour, date and spot
-    db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)-1}, function(err,forecast){
+    db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)}, function(err,forecast){
       console.log("INSIDE FORECAST FIND FOR LOG...", forecast[0]);
       if(err || forecast.length <= 0){
         log.remove();

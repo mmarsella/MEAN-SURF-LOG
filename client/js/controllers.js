@@ -129,9 +129,9 @@ function spotName(spot_id){
 
   // 1st array --> average wave height of spots sur
 
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.labels = ["Week-1", "Week-2", "Week-3", "Week-4"];
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40,5]
+    [4,5,8,6,5]
     
   ];
   $scope.onClick = function (points, evt) {
