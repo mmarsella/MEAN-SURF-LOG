@@ -88,6 +88,12 @@ app.directive('addLogForm',function(){
         $scope.newLog = {};
         $scope.postForm.$setPristine(); // clears form
         $scope.isCollapsed = !$scope.isCollapsed;
+
+        //update Pie CHart
+        $scope.updateLocations();
+        //update day count
+        $scope.updateDays();
+
         console.log("locOBJ after add", $scope.locObj)
         // $scope.addFormVisible = !$scope.addFormVisible;
       });

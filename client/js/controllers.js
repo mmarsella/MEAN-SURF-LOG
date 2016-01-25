@@ -6,8 +6,14 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   $scope.addFormVisible = false;
   $scope.isCollapsed = true;
   $scope.showModal = false;
-  $scope.days = $scope.logs.length; // For doughnut chart of days/month
+  $scope.hours = 0;  // For number display on user page
 
+
+  $scope.updateDays = function(){
+    $scope.days = $scope.logs.length; // For doughnut chart of days/month 
+  }
+
+  $scope.updateDays();
 
   console.log("Logs",$scope.logs);
   console.log("Days", $scope.days);
@@ -48,7 +54,6 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
     // }];
 
 
-  $scope.hours = 0;  // For number display on user page
 
 /************* CHART JS ************************/
 
@@ -95,33 +100,50 @@ function spotName(spot_id){
     return spots[spot_id] || "Not a spot!";
 }
 
+
+
+//wrap charts updates in functions, call when add/remove log
+
+
+
+
+
+
+
 /********** PIE CHART *********************************************/
   // loop through all of the logs in Calendar, assign locations to the data []
   
-  $scope.locObj = {};
-  for(var i=0; i < $scope.logs.length; i++){
-    if($scope.locObj[$scope.logs[i].spot_id]){
-      $scope.locObj[$scope.logs[i].spot_id]++;
-    }else{
-      $scope.locObj[$scope.logs[i].spot_id] = 1;
+
+  $scope.updateLocations = function(){
+    $scope.locObj = {};
+    for(var i=0; i < $scope.logs.length; i++){
+      if($scope.locObj[$scope.logs[i].spot_id]){
+        $scope.locObj[$scope.logs[i].spot_id]++;
+      }else{
+        $scope.locObj[$scope.logs[i].spot_id] = 1;
+      }
+      //accumulate all hours surfed
+      $scope.hours += $scope.logs[i].duration;
     }
-    //accumulate all hours surfed
-    $scope.hours += $scope.logs[i].duration;
+
+    // divide by 60 min and round up!
+    $scope.hours = Math.ceil($scope.hours/60);
+    // console.log("keys!",Object.keys($scope.locObj));
+    // console.log("locObj!!!",$scope.locObj);
+    var spotNames = Object.keys($scope.locObj).map(function(el){
+      return spotName(el);
+    });
+    var visitValues = [];
+    for(var val in $scope.locObj){
+      visitValues.push($scope.locObj[val]);
+    }
+    $scope.pieLabels = spotNames;
+    $scope.pieData = visitValues;
   }
 
-  // divide by 60 min and round up!
-  $scope.hours = Math.ceil($scope.hours/60);
-  // console.log("keys!",Object.keys($scope.locObj));
-  // console.log("locObj!!!",$scope.locObj);
-  var spotNames = Object.keys($scope.locObj).map(function(el){
-    return spotName(el);
-  });
-  var visitValues = [];
-  for(var val in $scope.locObj){
-    visitValues.push($scope.locObj[val]);
-  }
-  $scope.pieLabels = spotNames;
-  $scope.pieData = visitValues;
+  $scope.updateLocations();
+
+  
 /****************************************************************/
 
 
@@ -130,6 +152,9 @@ function spotName(spot_id){
   // 1st array --> average wave height of spots sur
 
   $scope.labels = ["Week-1", "Week-2", "Week-3", "Week-4"];
+
+
+
   $scope.data = [
     [4,5,8,6,5]
     
@@ -207,6 +232,8 @@ function spotName(spot_id){
         if(log._id === $scope.logs[i]._id){
           $scope.logs.splice(i,1);
           console.log("Logs after removal",$scope.logs);
+          $scope.updateLocations();
+          $scope.updateDays();
         }
       }
     })
