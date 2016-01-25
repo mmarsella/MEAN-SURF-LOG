@@ -138,18 +138,22 @@ router.post("/", function (req,res){
     db.Forecast.find({spot_id:log.spot_id,numDate:log.numDate,hour:closestHour(log.hour)}, function(err,forecast){
       console.log("INSIDE FORECAST FIND FOR LOG...", forecast[0]);
       if(err || forecast.length <= 0){
+        log.remove();
         // console.log("Error with forecast find:",err);
         res.status(500).send(["ERROR!", err, "Forecase Length", forecast.length]);
       }else{
         log.forecast = forecast[0];  // will save to the db as a ref.id to the forecast object
+        
         log.save(function(err){
           if(err){
             console.log("ERROR IN FORECAST",err);
+            console.log("REMOVE THE LOG!!!");
             res.status(500).send(err);
           }
           log.forecast = forecast[0];  //this will send back the whole forecast with the log
           res.send(log);
         });
+
       }
     });
   });

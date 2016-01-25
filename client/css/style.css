@@ -332,6 +332,9 @@ img { max-width: 100%; }
 
 /***********SHOW****************/
 
+#weatherIcon{
+      margin-left: 14px;
+}
 
 #waveIcon{
   width: 41px;

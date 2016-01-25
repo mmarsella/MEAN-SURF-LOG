@@ -6,24 +6,17 @@
                 <div class="modal-title">
                       <span id="showTitle">{{log.spot_name}}  </span>
                     <span>  {{log.date | date}}    </span>
-                    <span class="msw-sw msw-sw-{{log.forecast.condition.weather}}"></span>
+                    <div class="msw-sw msw-sw-{{log.forecast.condition.weather}}" id="weatherIcon"></div>
               </div> 
             </div> 
 
               <div class="modal-body">
                 <!--  <span><img src="http://icons.iconarchive.com/icons/fasticon/beach/128/wave-icon.png" id="waveIcon"></span> -->
+
+
+
                  <span class="waveHt">{{log.forecast.swell.minBreakingHeight}} - {{log.forecast.swell.maxBreakingHeight}} ft</span>
                  <div id="ratingContainer"></div>
-
-
-                
-                  
-                  
-                
-                  
-                
-
-
 
                   <div>
                     <p style="font-style:italic">{{log.description}}</p>
@@ -34,29 +27,13 @@
                     <span class=".msw-swa-{{log.forecast.wind.compassDirection}}" name="wind">{{log.forecast.wind.compassDirection}}</span>
                   </div>
                
-                 
-                
-             
-              
-        
-                
-             <!--    <div>MSW rating: {{log.forecast.fadedRating + log.forecast.solidRating}}</div> -->
-
-                
-
-                
-
                 <label for="myRate" id="myRate" class="condLabels">My Rating</label>
-                <span name="myRate" id="myRatingContainer"></span>
+                <div name="myRate" id="myRatingContainer"></div>
 
     </div>  
-                <!-- <div class="msw-ssa msw-ssa-10"></div> -->
 
             
                 <div class="modal-footer">
-
-                <!-- Ref these to larger img show-pages OR hover over expands img -->
-
                   <img src="{{log.forecast.charts.swell}}" class="swellImg pull-left"> 
 
                   <img src="{{log.forecast.charts.period}}" class="chartImg pull-left">
@@ -68,4 +45,5 @@
  </div>
 </div>
 
-  
+
+
