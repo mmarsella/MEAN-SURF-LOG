@@ -559,7 +559,7 @@ img { max-width: 100%; }
 
 
 .stars{
-  margin-left: -45%;
+  margin-left: -38%;
 }
 
 
@@ -595,6 +595,14 @@ textarea.expandable + textarea.expandable:hover, textarea.expandable + textarea.
     border-radius: 22%;
 }
 
+.condLabels{
+  color: #2E6DA4
+  
+}
+
+#myRatingContainer{
+  display: inline-flex;  
+}
 
 
 /*WEATHER SPRITES*/

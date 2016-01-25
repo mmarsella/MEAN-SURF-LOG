@@ -12,6 +12,28 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   console.log("Logs",$scope.logs);
   console.log("Days", $scope.days);
 
+//   function windConverter(){
+//   console.log("WIND CONVERTING!");
+//   for(var i=0; i < $scope.logs.length; i++){
+//     if($scope.logs[i].forecast.wind.direction < 100){
+//       $scope.logs[i].forecast.wind.direction = 10;
+//     }else if($scope.logs[i].forecast.wind.direction <= 200){
+//       $scope.logs[i].forecast.wind.direction = 150;
+//     }else if($scope.logs[i].forecast.wind.direction <= 300){
+//       $scope.logs[i].forecast.wind.direction = 250;
+//     }else{
+//       $scope.logs[i].forecast.wind.direction = 350;
+//     }
+//   }
+// }
+
+// windConverter();
+
+
+
+  //wind Converter
+
+
   
 
 
