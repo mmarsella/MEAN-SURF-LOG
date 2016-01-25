@@ -32,20 +32,39 @@
 
     </div>  
 
+
+
             
                 <div class="modal-footer">
+                  
+                  <a class="fancybox" rel="group" href="{{log.forecast.charts.swell}}">
+                    <img src="{{log.forecast.charts.swell}}" class="swellImg pull-left"> 
+                  </a>
+                  
+                   <a class="fancybox" rel="group" href="{{log.forecast.charts.period}}">
+                    <img src="{{log.forecast.charts.period}}" class="chartImg pull-left">
+                  </a>
 
-                  <img src="{{log.forecast.charts.swell}}" class="swellImg pull-left"> 
 
-                  <img src="{{log.forecast.charts.period}}" class="chartImg pull-left">
+
+                  <a class="fancybox" rel="group" href="{{log.forecast.charts.wind}}">
                   <img src="{{log.forecast.charts.wind}}" class="chartImg pull-left">
+                  </a>
+
+
+                  <a class="fancybox" rel="group" href="{{log.forecast.charts.pressure}}">
                   <img src="{{log.forecast.charts.pressure}}" class="chartImg pull-left">
+                  </a>
                   
                   <button ng-click="removeLog(log)" class="btn btn-sm btn-danger pull-right close" data-dismiss="modal">Delete Log</button>
                 </div>
   </div>
  </div>
 </div>
+
+
+
+
 
 
 
