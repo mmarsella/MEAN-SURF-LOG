@@ -44,6 +44,7 @@ app.directive('addLogForm',function(){
         $scope.rate = 5;
         $scope.max = 5;
         $scope.isReadonly = false;
+        $scope.addDescription = false;
 
         $scope.hoveringOver = function(value) {
           $scope.overStar = value;

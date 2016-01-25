@@ -1,6 +1,9 @@
 <!-- <h4>CREATE LOG</h4> -->
 
 <!-- <button ng-click="isCollapsed = !isCollapsed">X</button> -->
+
+<div class="container-fluid">
+  <div class="col-xs-6">
       <form name="postForm" class="text-center" ng-submit="addLog(newLog)" ng-hide="" id="addForm" novalidate>
           <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-calendar" id="basic-addon1"></span>
@@ -23,7 +26,7 @@
 
 
            <div class="input-group">
-          <span class="input-group-addon glyphicon glyphicon-star-empty" id="basic-addon1"></span>
+          <span class="input-group-addon glyphicon glyphicon-star-empty" id="starRating"></span>
 
           <uib-rating ng-model="newLog.rating" max="max" class="stars" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
           <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}</span>
@@ -35,7 +38,7 @@
 
 
 
-             <div class="input-group">
+            <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-globe" id="basic-addon1"></span>
           <select class="form-control" name="log[location]" id="location" ng-model="newLog.spot_id">
               <option value="4221">Bolinas</option>
@@ -57,11 +60,26 @@
           </select>
          <!--  <input type="text" class="form-control" placeholder="What spot.." aria-describedby="basic-addon1"name="log[location]" id="location" required> -->
         </div>
-             <div class="input-group">
+
+       <!--  <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-pencil" id="basic-addon1"></span>
           <input type="text" class="form-control" placeholder="Brief desc.." aria-describedby="basic-addon1"name="log[description]" id="description" ng-model="newLog.description" required>
-        </div>
+        </div> -->
+
+        <div class="btn btn-primary btn-sm glyphicon glyphicon-pencil" id="addDescription" ng-click="addDescription = !addDescription"> Add Description</div>
         <br>
       <!--   <button class="btn-lg btn-success">POST</button> -->
-      </form>
          <input type="submit" class="btn btn-success" id="submitButton" ng-disabled="postForm.$invalid">
+ </div>
+ <div class="col-xs-6">
+              <!-- <h3 id="textHead">How was it?</h3> -->
+            <div class="panel-body panel-300" id="logText" ng-show="addDescription">
+              <textarea class="form-control expandable" type="text" id="myIn" placeholder="Top expandable" rows="8" ng-model="newLog.description" required></textarea>
+              </div>
+
+   
+ </div>
+</div>
+      </form>
+
+

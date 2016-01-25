@@ -53,7 +53,7 @@ header video-bg {
 
 .calendar{
   margin-left: 2%;
-  width: 75%;
+  width: 100%;
 }
 
 #ocean{
@@ -469,7 +469,7 @@ img { max-width: 100%; }
 }
 
 #time,#date,#duration,#location{
-  width: 50%;
+  width: 75%;
 }
 
 /*#date{
@@ -494,25 +494,69 @@ img { max-width: 100%; }
   background-color: #067FC0;
 }
 
+#starRating{
+    background-color: #00AAEB;
+}
+
 
 
 .glyphicon-globe{
-
+ background-color: #6AD0FA;
 }
 
 #submitButton{
-  margin-left: 17%;
+  margin-left: -24%;
+  margin-top: 2%;
 }
 
 .form-control{
   font-size: 13px;
 }
 
+#addDescription{
+    margin-left: -22%;
+    margin-top: 3%;
+}
+
 
 
 .stars{
-  margin-left: -58%;
+  margin-left: -45%;
 }
+
+
+textarea.expandable {
+  height:40px;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+textarea.expandable:hover, textarea.expandable:focus {
+  height:calc(100% - 90px);      
+  -webkit-transition: all 0.8s ease-in-out;
+}
+      
+.panel-300:hover, .panel-300 {
+  height:300px;    
+}
+
+textarea.expandable + textarea.expandable:hover, textarea.expandable + textarea.expandable:focus {
+  height:calc(100% - 90px)  
+}
+
+#textHead{
+  color: #d9edf7;
+}
+
+#myIn{
+  border-radius: 17%;
+  background-color: #d9edf7;
+}
+
+#logText{
+    border: solid 10px #2FA4E7;
+    border-radius: 22%;
+}
+
 
 
 /*WEATHER SPRITES*/
