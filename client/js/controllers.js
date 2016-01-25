@@ -26,19 +26,6 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
     // }];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   $scope.hours = 0;  // For number display on user page
 
 /************* CHART JS ************************/
@@ -345,6 +332,24 @@ $scope.calendarVisible = true;
         }
         document.getElementById("ratingContainer").innerHTML = rating.join(" ");
         /********************************************************************************/
+
+
+        /******** MY RATING SYSTEM!!!!!! ****************/
+        var myRating = [];
+        // Loop the solid rating on a single forecast object.
+        for (var i = 0; i < $scope.log.rating; i++) {
+            myRating.push('<img src="http://cdnimages.magicseaweed.com/star_filled.png" />');
+        }
+        // Loop the faded rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.fadedRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_empty.png" />');
+        }
+        document.getElementById("myRatingContainer").innerHTML = myRating.join(" ");
+
+
+
+
+        /************************************************/
 
     };
     /* alert on Drop */

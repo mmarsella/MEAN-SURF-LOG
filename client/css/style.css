@@ -333,6 +333,17 @@ img { max-width: 100%; }
 /***********SHOW****************/
 
 
+#waveIcon{
+  width: 41px;
+}
+
+.waveHt{
+      color: #2e6da4;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+
 .calAlert{
   width: 595px; float: right; margin-bottom: 5px;
 }
@@ -359,8 +370,35 @@ img { max-width: 100%; }
   margin-bottom: 10px;
 }
 
+.modal-header{
+  background-color: #337ab7;
+  color: white;
+}
+
 .modal-content{
 }
+
+#showTitle{
+  font-weight: 800;
+}
+
+.modal-body{
+  padding-top: 10px;
+}
+
+.mswRating{
+      color: #337AB7;
+    font-weight: bold;
+}
+
+#ratingContainer{
+    margin-top: -9px;
+    margin-left: -2px;
+}
+
+
+
+
 
 /* NAVBAR */
 

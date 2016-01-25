@@ -3,29 +3,56 @@
             <div class="modal-content"> 
               <div class="modal-header"> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
-                <h3 class="modal-title">{{log.spot_name}}</h3> 
+                <div class="modal-title">
+                      <span id="showTitle">{{log.spot_name}}  </span>
+                    <span>  {{log.date | date}}    </span>
+                    <span class="msw-sw msw-sw-{{log.forecast.condition.weather}}"></span>
+              </div> 
+            </div> 
 
-                <span>
+              <div class="modal-body">
+                <!--  <span><img src="http://icons.iconarchive.com/icons/fasticon/beach/128/wave-icon.png" id="waveIcon"></span> -->
+                 <span class="waveHt">{{log.forecast.swell.minBreakingHeight}} - {{log.forecast.swell.maxBreakingHeight}} ft</span>
+                 <div id="ratingContainer"></div>
 
-                  <span><h4>{{log.date | date}}</h4></span>
-                  <span class="msw-sw msw-sw-{{log.forecast.condition.weather}}"></span>
-                </span>
+
+                
+                  
+                  
+                
+                  
+                
 
 
-                <p>{{log.description}}</p>
-                <span><h4>{{log.forecast.swell.minBreakingHeight}} - {{log.forecast.swell.maxBreakingHeight}} ft</h4> </span>
-                <div id="ratingContainer"></div>
-                <span>Your rating: {{log.rating}}</span>
+
+                  <div>
+                    <p style="font-style:italic">{{log.description}}</p>
+                  </div>
+
+                  <div class="windDirection">
+                    <p>Wind: </p>
+                    <p>Swell: </p>
+                  </div>
+               
+                  <div class="swellDirection">
+                  </div>
+                
+             
+              
+        
+                
              <!--    <div>MSW rating: {{log.forecast.fadedRating + log.forecast.solidRating}}</div> -->
 
                 
 
                 
 
-                {{log.forecast.condition.weather}}
+                <label for="myRate" id="myRate">My Rating</label>
+                <span name="myRate" id="myRatingContainer"></span>
 
+    </div>  
                 <!-- <div class="msw-ssa msw-ssa-10"></div> -->
-              </div> 
+
             
                 <div class="modal-footer">
 
@@ -39,8 +66,7 @@
                   
                   <button ng-click="removeLog(log)" class="btn btn-sm btn-danger pull-right close" data-dismiss="modal">Delete Log</button>
                 </div>
-            </div> 
-    </div>  
+ </div>
 </div>
 
   
