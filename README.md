@@ -20,14 +20,15 @@ Technologies used to build surf log are:
 Next Steps for Surf Log
 -----------------------
 
-1)  Add additional weather components for show pages on logs.
-2)  Associate local tide forecasts.
-3)  Drag and drop functionality on the log-calendar.
-4)  Users can follow other users.  Adding the ability to compare and contrast statistics with friends.
-5)  A current/future forecast feature.
-6)  Expand location database to all of California and west coast.
-7)  Image uploads.
-8)  User account settings: modify email,picture,delete acct, etc...
+-  Add additional weather components for show pages on logs.
+-  Associate local tide forecasts.
+-  About page.
+-  Drag and drop functionality on the log-calendar.
+-  Users can follow other users.  Adding the ability to compare and contrast statistics with friends.
+-  A current/future forecast feature.
+-  Expand location database to all of California and west coast.
+-  Image uploads.
+-  User account settings: modify email,picture,delete acct, etc...
 
 
 Any feedback is greatly appreciated!  If you like this project, please check in periodically as this is an active, on-going project of mine.
