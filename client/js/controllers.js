@@ -15,8 +15,8 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
 
   $scope.updateDays();
 
-  console.log("Logs",$scope.logs);
-  console.log("Days", $scope.days);
+  // console.log("Logs",$scope.logs);
+  // console.log("Days", $scope.days);
 
 //   function windConverter(){
 //   console.log("WIND CONVERTING!");
@@ -160,7 +160,7 @@ function spotName(spot_id){
     
   ];
   $scope.onClick = function (points, evt) {
-    console.log(points, evt);
+    // console.log(points, evt);
   };
 
   // Simulate async data update
@@ -231,7 +231,7 @@ function spotName(spot_id){
        for(var i=0; i < $scope.logs.length; i++){
         if(log._id === $scope.logs[i]._id){
           $scope.logs.splice(i,1);
-          console.log("Logs after removal",$scope.logs);
+          // console.log("Logs after removal",$scope.logs);
           $scope.updateLocations();
           $scope.updateDays();
         }
@@ -287,8 +287,8 @@ $scope.calendarVisible = true;
           }
         }      
     
-      console.log("LOGS",$scope.logs);
-      console.log("Events", $scope.events);
+      // console.log("LOGS",$scope.logs);
+      // console.log("Events", $scope.events);
 
 
         // function addCalendarEvent(log){
@@ -346,9 +346,9 @@ $scope.calendarVisible = true;
       $scope.log = {};
       // date is the eventObject
 
-        console.log("date",date);
-        console.log("jsEvent",jsEvent);
-        console.log("view",view);
+        // console.log("date",date);
+        // console.log("jsEvent",jsEvent);
+        // console.log("view",view);
 
         //Find log from event, set it to $scope.log
         for(var i=0; i < $scope.logs.length; i++){
@@ -361,7 +361,7 @@ $scope.calendarVisible = true;
         $scope.showModal = !$scope.showModal;
 
 
-        console.log("Weather condition",$scope.log.forecast.condition.weather);
+        // console.log("Weather condition",$scope.log.forecast.condition.weather);
 
 
 
@@ -455,8 +455,6 @@ $scope.calendarVisible = true;
           right: 'today prev,next'
         },
         eventClick: $scope.onEventClick,
-        eventDrop: $scope.alertOnDrop,
-        eventResize: $scope.alertOnResize,
         eventRender: $scope.eventRender
       }
     };
