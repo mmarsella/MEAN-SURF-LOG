@@ -55,7 +55,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, ChartJsPro
   // heroku:  1504124496560784
 
   $authProvider.facebook({
-    clientId: '1504124496560784',
+    clientId: '1506617022978198',
     url: '/api/auth/facebook'
   });
 
