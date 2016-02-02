@@ -1,17 +1,185 @@
-
 // USER DASHBOARD
 app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCalendarConfig, ForecastService, LogService,logs){
   $scope.log = {};
   $scope.logs = logs;
-
-    $scope.showModal = false;
-    // $scope.toggleModal = function(){
-    //   console.log("TOGGLE");
-    //   $scope.showModal = !$scope.showModal;
-    // };
+  $scope.addFormVisible = false;
+  $scope.isCollapsed = true;
+  $scope.showModal = false;
+  $scope.hours = 0;  // For number display on user page
 
 
-  console.log("HEREE'S THE USER", logs);
+  $scope.updateDays = function(){
+    $scope.days = $scope.logs.length; // For doughnut chart of days/month 
+  }
+
+  $scope.updateDays();
+
+  // console.log("Logs",$scope.logs);
+  // console.log("Days", $scope.days);
+
+//   function windConverter(){
+//   console.log("WIND CONVERTING!");
+//   for(var i=0; i < $scope.logs.length; i++){
+//     if($scope.logs[i].forecast.wind.direction < 100){
+//       $scope.logs[i].forecast.wind.direction = 10;
+//     }else if($scope.logs[i].forecast.wind.direction <= 200){
+//       $scope.logs[i].forecast.wind.direction = 150;
+//     }else if($scope.logs[i].forecast.wind.direction <= 300){
+//       $scope.logs[i].forecast.wind.direction = 250;
+//     }else{
+//       $scope.logs[i].forecast.wind.direction = 350;
+//     }
+//   }
+// }
+
+// windConverter();
+
+
+
+/************* CHART JS ************************/
+
+      var spots = {4221:"Bolinas",
+             4215:"Bolinas Jetty", 
+             302: "Eureka",
+             299: "Klamath River",
+             819: "Linda Mar/Pacifica",
+             307: "Marin County",
+             301: "Moonstone Beach",
+             255: "Ocean Beach",
+             300: "Patrick's Point",
+             304: "Point Arena",
+             306: "Salmon Creek",
+             305: "Secrets",
+             4083: "Shelter Cove",
+             298: "South Beach",
+             4216: "Stinson Beach",
+             303: "Virgin Creek",
+             //CEN-CAL SPOTS
+             260: "Andrew Molera State Park",
+             261: "Cambria",
+             666: "Carmel Beach",
+             866: "Cayucos",
+             256: "Davenport Landing",
+             257: "Four Mile",
+             825: "Ghost Trees",
+             258: "Manresa Beach",
+             162: "Mavericks (Half Moon Bay)",
+             3734:"Monterey Bay Offshore",
+             262: "Morro Bay",
+             259: "Moss Landing",
+             264: "Oceano/Pismo",
+             4423:"Pico Creek",
+             644: "Pleasure Point",
+             3679: "Princeton Jetty",
+             263: "Saint Annes",
+             4422: "Sand Dollar Beach",
+             163: "Steamer Lane",
+             3742: "Waddell Creek"
+              };
+var spot_ids = Object.keys(spots);
+function spotName(spot_id){
+    return spots[spot_id] || "Not a spot!";
+}
+
+
+
+//wrap charts updates in functions, call when add/remove log
+
+
+
+
+
+
+
+/********** PIE CHART *********************************************/
+  // loop through all of the logs in Calendar, assign locations to the data []
+  
+
+  $scope.updateLocations = function(){
+    $scope.locObj = {};
+    for(var i=0; i < $scope.logs.length; i++){
+      if($scope.locObj[$scope.logs[i].spot_id]){
+        $scope.locObj[$scope.logs[i].spot_id]++;
+      }else{
+        $scope.locObj[$scope.logs[i].spot_id] = 1;
+      }
+      //accumulate all hours surfed
+      $scope.hours += $scope.logs[i].duration;
+    }
+
+    // divide by 60 min and round up!
+    $scope.hours = Math.ceil($scope.hours/60);
+    // console.log("keys!",Object.keys($scope.locObj));
+    // console.log("locObj!!!",$scope.locObj);
+    var spotNames = Object.keys($scope.locObj).map(function(el){
+      return spotName(el);
+    });
+    var visitValues = [];
+    for(var val in $scope.locObj){
+      visitValues.push($scope.locObj[val]);
+    }
+    $scope.pieLabels = spotNames;
+    $scope.pieData = visitValues;
+  }
+
+  $scope.updateLocations();
+
+  
+/****************************************************************/
+
+
+/************* LINE CHART ************************************/
+
+  // 1st array --> average wave height of spots sur
+
+  $scope.labels = ["Week-1", "Week-2", "Week-3", "Week-4"];
+
+
+
+  $scope.data = [
+    [4,5,8,6,5]
+    
+  ];
+  $scope.onClick = function (points, evt) {
+    // console.log(points, evt);
+  };
+
+  // Simulate async data update
+  // $timeout(function () {
+  //   $scope.data = [
+  //     [28, 48, 40, 19, 86, 27, 90],
+  //     [65, 59, 80, 81, 56, 55, 40]
+  //   ];
+  // }, 3000);
+
+
+  /**************************************************************/
+
+
+  /**** locObj doesn't update on adding/removing an event ***/
+
+
+
+
+
+
+
+  
+  // Bar Chart
+  $scope.labels3 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data3 = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+
+
+/***********************************************/
+
+  $scope.showAddForm = function(){
+    $scope.addFormVisible = !$scope.addFormVisible;
+  }
+
 
   $scope.apiCall = function(){
     // An $http service returns a promise. --> then handles the data inside the promise the data in the callback is what has been resolved and returned from the API
@@ -38,16 +206,28 @@ app.controller("MainController", function($scope,$auth,$compile,$timeout, uiCale
   //   });
   // }
 
+  $scope.removeLog = function(log){
+    LogService.removeLog(log).then(function(log){
+      $scope.removeEvent(log);  // remove from calendar
+       for(var i=0; i < $scope.logs.length; i++){
+        if(log._id === $scope.logs[i]._id){
+          $scope.logs.splice(i,1);
+          // console.log("Logs after removal",$scope.logs);
+          $scope.updateLocations();
+          $scope.updateDays();
+        }
+      }
+    })
+  }
+
 /*___________________________________________
 ************** FULL CALENDAR ****************
 --------------------------------------------*/
-
 
 $scope.calendarVisible = true;
 
 
 // console.log("First Log",$scope.logs[0])
-
 // console.log("Location: ", $scope.logs[0].spot_name);
 // console.log("numDate: ", $scope.logs[0].numDate);
 // console.log("numMonth: ", $scope.logs[0].numMonth);
@@ -64,24 +244,16 @@ $scope.calendarVisible = true;
 
 
     /* event source that pulls from google.com */
-    $scope.eventSources = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
-    };
+    // $scope.eventSources = {
+    //         url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+    //         className: 'gcal-event',           // an option!
+    //         currentTimezone: 'America/Chicago' // an option!
+    // };
 
 
 
     /* event source that contains custom events on the scope */
-    $scope.events = [
-      // {title: $scope.logs[0].spot_name, start: new Date(y,$scope.logs[0].numMonth,$scope.logs[0].numDate), color:"red"},
-      // {title: 'All Day Event',start: new Date(y, m, 1)},
-      // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
-      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d , 16, 0),allDay: false},
-      // {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      // {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
+    $scope.events = [];
 
     
         if($scope.logs){
@@ -91,31 +263,34 @@ $scope.calendarVisible = true;
             obj.title = $scope.logs[i].spot_name;
             obj.start = new Date(y, $scope.logs[i].numMonth, $scope.logs[i].numDate, $scope.logs[i].hour, $scope.logs[i].minutes),
             
-              obj.color = "blue";
+            obj.color = "blue";
             $scope.events.push(obj);
           }
         }      
     
+      // console.log("LOGS",$scope.logs);
+      // console.log("Events", $scope.events);
 
-        function addCalendarEvent(log){
-            var obj = {};
-            obj.title = log.spot_name;
-            obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
+
+        // function addCalendarEvent(log){
+        //     var obj = {};
+        //     obj.title = log.spot_name;
+        //     obj.start = new Date(y, log.numMonth, log.numDate, log.hour, log.minutes),
             
-              obj.color = "blue";
-            $scope.events.push(obj);
+        //       obj.color = "blue";
+        //     $scope.events.push(obj);
 
+        // }
+
+
+          /* remove event */
+    $scope.removeEvent = function(event){
+      for(var i=0; i < $scope.events.length; i++){
+        if(event._id === $scope.events[i]._id){
+          $scope.events.splice(i,1);
         }
-
-
-
-
-    // GRAB user minutes from the log model
-
-    // parse this field when creatinng time
-
-
-
+      }
+    };
 
     /* event source that calls a function on every view switch */
     // $scope.eventsF = function (start, end, timezone, callback) {
@@ -142,7 +317,6 @@ $scope.calendarVisible = true;
 
     /*
       Should make a call to get an indiv log....
-
     */
 
 
@@ -152,9 +326,9 @@ $scope.calendarVisible = true;
       $scope.log = {};
       // date is the eventObject
 
-        console.log("date",date);
-        console.log("jsEvent",jsEvent);
-        console.log("view",view);
+        // console.log("date",date);
+        // console.log("jsEvent",jsEvent);
+        // console.log("view",view);
 
         //Find log from event, set it to $scope.log
         for(var i=0; i < $scope.logs.length; i++){
@@ -163,14 +337,52 @@ $scope.calendarVisible = true;
           }
         }
 
-        // $scope.calendarVisible = !$scope.calendarVisible;
+        
         $scope.showModal = !$scope.showModal;
-        $scope.alertMessage = (date.title + ' was clicked by ' + $scope.currentUser.displayName);
 
+
+        // console.log("Weather condition",$scope.log.forecast.condition.weather);
+
+
+
+
+
+       
+
+        /*********** MSW STAR RATING SYSTEM!!!! ********************/
+        var rating = [];
+        // Loop the solid rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.solidRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_filled.png" />');
+        }
+        // Loop the faded rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.fadedRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_empty.png" />');
+        }
+        document.getElementById("ratingContainer").innerHTML = rating.join(" ");
+        /********************************************************************************/
+
+
+        /******** MY RATING SYSTEM!!!!!! ****************/
+        var myRating = [];
+        // Loop the solid rating on a single forecast object.
+        for (var i = 0; i < $scope.log.rating; i++) {
+            myRating.push('<img src="http://cdnimages.magicseaweed.com/star_filled.png" />');
+        }
+        // Loop the faded rating on a single forecast object.
+        for (var i = 0; i < $scope.log.forecast.fadedRating; i++) {
+            rating.push('<img src="http://cdnimages.magicseaweed.com/star_empty.png" />');
+        }
+        document.getElementById("myRatingContainer").innerHTML = myRating.join(" ");
+
+
+
+
+        /************************************************/
 
     };
     /* alert on Drop */
-     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
+    $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
        $scope.alertMessage = ('Event Dropped to make dayDelta ' + delta);
     };
     /* alert on Resize */
@@ -190,19 +402,7 @@ $scope.calendarVisible = true;
         sources.push(source);
       }
     };
-    /* add custom event*/
-    $scope.addEvent = function() {
-      $scope.events.push({
-        title: 'Open Sesame',
-        start: new Date(y, m, 28),
-        end: new Date(y, m, 29),
-        className: ['openSesame']
-      });
-    };
-    /* remove event */
-    $scope.remove = function(index) {
-      $scope.events.splice(index,1);
-    };
+
     /* Change View */
     $scope.changeView = function(view,calendar) {
       uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
@@ -225,7 +425,9 @@ $scope.calendarVisible = true;
     /* config object */
     $scope.uiConfig = {
       calendar:{
-        height: 450,
+        height: 380,
+        width: 100,
+        
         editable: true,
         header:{
           left: 'title',
@@ -233,8 +435,6 @@ $scope.calendarVisible = true;
           right: 'today prev,next'
         },
         eventClick: $scope.onEventClick,
-        eventDrop: $scope.alertOnDrop,
-        eventResize: $scope.alertOnResize,
         eventRender: $scope.eventRender
       }
     };
